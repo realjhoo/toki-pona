@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+@font-face {
+  font-family: "linja-pona";
+  src: url("/font/linja-pona-4.1.woff") format("woff");
+}
+
+:root {
+  --main-color: #333;
+  --text-color: #f4f4f4;
+  --text-font: Montserrat;
+  --toki-font: linja-pona;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--main-color);
+  color: var(--text-color);
+  font-family: var(--text-font);
+}
+
+.title {
+  text-align: center;
+  padding: 1rem;
+}
+
+.directions {
+  padding-top: 1rem;
+}
+
+.question {
+  font-size: 5rem;
+  padding: 2rem;
+}
+
+.choice {
+  padding: 12px;
+  border-top: 2px solid var(--text-color);
+  border-left: 2px solid var(--text-color);
+  border-right: 2px solid var(--text-color);
+  width: 45%;
+  margin: auto;
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.choice-d {
+  border-bottom: 2px solid var(--text-color);
+}
+
+.choice:hover {
+  background-color: var(--text-color);
+  color: var(--main-color);
+}
+
+.buttons {
+  padding: 2rem;
+}
+
+button {
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #f4f4f4;
+  border-radius: 6px;
+}
+
+.radios {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.scoreboard {
+  margin: 1rem;
+  padding: 1rem;
+  font-size: 2rem;
+  border: 2px solid var(--text-color);
+  width: 45%;
+  margin: auto;
+}
+
+.toki-pona {
+  font-family: var(--toki-font);
+  font-feature-settings: "liga" 1, "clig" 1, "calt" 1, "kern" 1, "mark" 1;
+  text-rendering: optimizeLegibility;
+}
+
+.center {
+  text-align: center;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+}

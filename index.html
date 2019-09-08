@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Toki Pona Sitelen</title>
+  </head>
+  <body>
+    <div class="title">
+      <h1>Toki Pona Sitelen</h1>
+      <h1 class="toki-pona">toki-pona sitelen</h1>
+    </div>
+
+    <!-- BEGIN APP HERE -->
+    <section class="directions center">
+      Select the best choice for the following glyph:<br />
+      seme nimi sama li sama sitelen?
+    </section>
+
+    <section class="question toki-pona center" id="glyph">kulupu</section>
+
+    <section class="choices center">
+      <ul>
+        <li class="choice choice-a">kulupu</li>
+        <li class="choice choice-b">mi</li>
+        <li class="choice choice-c">ike</li>
+        <li class="choice choice-d">monsi</li>
+      </ul>
+    </section>
+
+    <section class="buttons center">
+      <button>
+        I don't know<br />
+        mi sona ala
+      </button>
+
+      <div class="radios">
+        <label>
+          <input type="radio" name="words" id="rdo-words" checked />
+          <span>Words</span>
+        </label>
+
+        <label>
+          <input type="radio" name="words" id="rdo-compound" />
+          <span>Compound Words Only</span>
+        </label>
+
+        <label>
+          <input type="radio" name="words" id="rdo-both" />
+          <span>Both Words and Compound Words</span>
+        </label>
+      </span>
+    </div>
+
+    <section class="scoreboard center">
+      sina jo e: <span class="score">0</span>
+    </section>
+
+    <footer class="center">
+      <p class="toki-pona">nimi mi jan [_uta_walo_en]</p>
+      <p>&copy; 2019 jan Uwe</p>
+    </footer>
+  </body>
+</html>
