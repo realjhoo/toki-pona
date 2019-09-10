@@ -18,48 +18,49 @@
       seme nimi sama li sama sitelen?
     </section>
 
-    <section class="question toki-pona center" id="glyph">kulupu</section>
+    <section class="question toki-pona center" id="glyph">ali</section>
 
     <section class="choices center">
       <ul>
-        <li class="choice choice-a">kulupu</li>
-        <li class="choice choice-b">mi</li>
-        <li class="choice choice-c">ike</li>
-        <li class="choice choice-d">monsi</li>
+        <li class="choice choice-0" id="choice-0">kulupu</li>
+        <li class="choice choice-1" id="choice-1">mi</li>
+        <li class="choice choice-2" id="choice-2">ike</li>
+        <li class="choice choice-3" id="choice-3">monsi</li>
       </ul>
     </section>
 
     <section class="buttons center">
-      <button>
-        I don't know<br />
-        mi sona ala
+      <button class="btn_next toki-pona" id="btn_next">
+        sin
       </button>
+    </section>
 
-      <div class="radios">
-        <label>
-          <input type="radio" name="words" id="rdo-words" checked />
-          <span>Words</span>
-        </label>
+    <div class="radios">
+      <label>
+        <input type="radio" name="words" id="rdo-words" checked />
+        <span>Words</span>
+      </label>
 
-        <label>
-          <input type="radio" name="words" id="rdo-compound" />
-          <span>Compound Words Only</span>
-        </label>
+      <label>
+        <input type="radio" name="words" id="rdo-compound" />
+        <span>Compound Words Only</span>
+      </label>
 
-        <label>
-          <input type="radio" name="words" id="rdo-both" />
-          <span>Both Words and Compound Words</span>
-        </label>
-      </span>
+      <label>
+        <input type="radio" name="words" id="rdo-both" />
+        <span>Both Words and Compound Words</span>
+      </label>
     </div>
 
     <section class="scoreboard center">
-      sina jo e: <span class="score">0</span>
+      sina jo e: <span class="score" id="score">0</span>
     </section>
 
     <footer class="center">
       <p class="toki-pona">nimi mi jan [_uta_walo_en]</p>
       <p>&copy; 2019 jan Uwe</p>
     </footer>
+    <script src="js/words.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>

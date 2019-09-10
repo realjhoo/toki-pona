@@ -54,7 +54,7 @@ body {
   cursor: pointer;
 }
 
-.choice-d {
+.choice-3 {
   border-bottom: 2px solid var(--text-color);
 }
 
@@ -72,6 +72,12 @@ button {
   font-size: 1rem;
   background-color: #f4f4f4;
   border-radius: 6px;
+}
+
+.btn_next {
+  width: 10rem;
+  font-size: 3rem;
+  outline: none;
 }
 
 .radios {
