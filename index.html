@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width", initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <title>Toki Pona Sitelen</title>
   </head>
@@ -14,18 +14,17 @@
 
     <!-- BEGIN APP HERE -->
     <section class="directions center">
-      Select the best choice for the following glyph:<br />
       seme nimi sama li sama sitelen?
     </section>
 
-    <section class="question toki-pona center" id="glyph">ali</section>
+    <section class="question toki-pona center" id="glyph"></section>
 
     <section class="choices center">
       <ul>
-        <li class="choice choice-0" id="choice-0">kulupu</li>
-        <li class="choice choice-1" id="choice-1">mi</li>
-        <li class="choice choice-2" id="choice-2">ike</li>
-        <li class="choice choice-3" id="choice-3">monsi</li>
+        <li class="choice choice-0" id="choice-0"></li>
+        <li class="choice choice-1" id="choice-1"></li>
+        <li class="choice choice-2" id="choice-2"></li>
+        <li class="choice choice-3" id="choice-3"></li>
       </ul>
     </section>
 
@@ -35,22 +34,22 @@
       </button>
     </section>
 
-    <div class="radios">
+    <section class="radios">
       <label>
         <input type="radio" name="words" id="rdo-words" checked />
-        <span>Words</span>
+        <span>nimi</span>
       </label>
 
       <label>
         <input type="radio" name="words" id="rdo-compound" />
-        <span>Compound Words Only</span>
+        <span>nimi nimi</span>
       </label>
 
       <label>
-        <input type="radio" name="words" id="rdo-both" />
-        <span>Both Words and Compound Words</span>
+        <!-- <input type="radio" name="words" id="rdo-both" /> -->
+        <!-- <span>Both Words and Compound Words</span> -->
       </label>
-    </div>
+    </section>
 
     <section class="scoreboard center">
       sina jo e: <span class="score" id="score">0</span>
@@ -61,6 +60,7 @@
       <p>&copy; 2019 jan Uwe</p>
     </footer>
     <script src="js/words.js"></script>
+    <script src="js/compounds.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

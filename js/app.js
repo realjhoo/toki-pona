@@ -52,6 +52,7 @@ function next_button() {
 }
 
 function no_dupes() {
+  // This is ugly - but it works and is easy to understand
   let one = document.getElementById("choice-0").innerText;
   let two = document.getElementById("choice-1").innerText;
   let three = document.getElementById("choice-2").innerText;
@@ -66,24 +67,45 @@ function no_dupes() {
     three === four
   ) {
     reload_quiz();
-    console.log("There was a DUPE!!!!!!");
   }
 }
 
-function reload_quiz() {
+function words() {
   for (let i = 0; i < 4; i++) {
-    random = random_num(126);
+    random = random_num(nimi.length);
+    console.log(nimi.length);
     document.getElementById("choice-" + i).innerText = nimi[random];
   }
   random = random_num(3);
   glyph = document.getElementById("choice-" + random).innerText;
   document.getElementById("glyph").innerText = glyph;
+}
+
+function compounds() {
+  for (let i = 0; i < 4; i++) {
+    random = random_num(nimi_nimi.length);
+
+    document.getElementById("choice-" + i).innerText = nimi_nimi[random];
+  }
+  random = random_num(3);
+  glyph = document.getElementById("choice-" + random).innerText;
+  document.getElementById("glyph").innerText = glyph;
+}
+
+function reload_quiz() {
+  let anu = document.getElementsByName("words");
+  if (anu[0].checked) {
+    words();
+  } else {
+    compounds();
+  }
   no_dupes();
 }
 
 function main() {
   answer_check();
   next_button();
+  reload_quiz();
 }
 
 main();

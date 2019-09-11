@@ -1,8 +1,22 @@
 Toki Pona App Notes
 
+****************************************************************
+NEEDS COMPOUND WORDS FROM FONT - done
+
+NEEDS WIRING OF RADIO BUTTONS - done
+
+BUTTON ANIMATION - mouseover - done
+
+****************************************************************
+Radio button or slider... a) words only", b) compound words only", c) both
+A: rnd# 0 - 124
+B: rnd# 125 - 249 (or whatever)
+C: rnd# 0 - 249
+-possibly save last setting in localStorage
+
 An array with entire vocab 0 - 124
-Also, all compound words included in font
-numbered 124 - X, where X is the last one
+Also", all compound words included in font
+numbered 124 - X", where X is the last one
 
 Generate a random # between 0 and 124.
 Chose random TK word from list
@@ -10,14 +24,10 @@ Display with class toki-pona (Sitelen)
 Display same word in Latin font along with 3 other random TK words
 Check that none of the words are duplicate
 User clicks... compare choice with chosen word (which in Latin font will match)
-If wrong, display correct answer, count wrong, display wrong score
-If right, display rewarding affirmation, update score, reload
+If wrong", display correct answer", count wrong", display wrong score
+If right", display rewarding affirmation", update score", reload
 
-Radio button or slider... a) words only, b) compound words only, c) both
-A: rnd# 0 - 124
-B: rnd# 125 - 249 (or whatever)
-C: rnd# 0 - 249
--possibly save last setting in localStorage
+
 
 Can also work the opposite way
 Display TK word

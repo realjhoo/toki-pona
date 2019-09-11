@@ -27,27 +27,30 @@ body {
   background-color: var(--main-color);
   color: var(--text-color);
   font-family: var(--text-font);
+  min-height: 640px;
+  min-width: 360px;
 }
 
 .title {
+  font-size: 1.4rem;
   text-align: center;
   padding: 1rem;
 }
 
 .directions {
-  padding-top: 1rem;
+  padding-top: 0.6rem;
 }
 
 .question {
-  font-size: 5rem;
-  padding: 2rem;
+  font-size: 6rem;
+  padding: 1.2rem;
 }
 
 .choice {
-  padding: 12px;
-  border-top: 2px solid var(--text-color);
-  border-left: 2px solid var(--text-color);
-  border-right: 2px solid var(--text-color);
+  padding: 0.5rem;
+  border-top: 1px solid var(--text-color);
+  border-left: 1px solid var(--text-color);
+  border-right: 1px solid var(--text-color);
   width: 45%;
   margin: auto;
   list-style-type: none;
@@ -55,7 +58,7 @@ body {
 }
 
 .choice-3 {
-  border-bottom: 2px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
 }
 
 .choice:hover {
@@ -64,42 +67,64 @@ body {
 }
 
 .buttons {
-  padding: 2rem;
-}
-
-button {
-  padding: 12px;
-  font-size: 1rem;
-  background-color: #f4f4f4;
-  border-radius: 6px;
+  padding: 1.5rem;
 }
 
 .btn_next {
-  width: 10rem;
+  background-color: #afe632;
+  background: linear-gradient(to bottom, #afe632 5%, #77a809 100%);
+  border-radius: 6px;
+  border: 1px solid #afe632;
+  box-shadow: inset 0px 1px 0px 0px #a4e271;
+  color: var(--text-color);
+  cursor: pointer;
   font-size: 3rem;
   outline: none;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #528009;
+  width: 10rem;
+}
+
+.btn_next:hover {
+  background: linear-gradient(to bottom, #77a809 5%, #89c403 100%);
+  background-color: #77a809;
+}
+
+.btn_next:active {
+  box-shadow: inset 0px 1px 0px 0px #a4e271;
+  background: linear-gradient(to bottom, #89c403 5%, #77a809 100%);
+  background-color: #89c403;
+  border-radius: 6px;
+  border: 1px solid #74b807;
+  cursor: pointer;
+  color: var(--text-font);
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #528009;
 }
 
 .radios {
-  display: flex;
-  flex-direction: column;
-  padding-top: 1rem;
+  display: grid;
   padding-bottom: 1rem;
+  justify-items: center;
+  font-size: 1.2rem;
 }
 
 .scoreboard {
   margin: 1rem;
   padding: 1rem;
   font-size: 2rem;
-  border: 2px solid var(--text-color);
+  border: 1px solid var(--text-color);
   width: 45%;
   margin: auto;
 }
 
 .toki-pona {
   font-family: var(--toki-font);
-  font-feature-settings: "liga" 1, "clig" 1, "calt" 1, "kern" 1, "mark" 1;
-  text-rendering: optimizeLegibility;
+  /* font-feature-settings: "liga" 1 ", " clig " 1", "calt" 1 ", " kern " 1",
+    "mark" 1; */
+  /* text-rendering: optimizeLegibility; */
 }
 
 .center {
