@@ -2,7 +2,10 @@
 
 @font-face {
   font-family: "linja-pona";
+  /* local resource */
   src: url("/font/linja-pona-4.1.woff") format("woff");
+  /* online resource */
+  /* src: url("https://realjhoo.com/projects/toki-pona-sitelen/font/linja-pona-4.1.woff") format("woff"); */
 }
 
 :root {
