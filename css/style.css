@@ -2,10 +2,7 @@
 
 @font-face {
   font-family: "linja-pona";
-  /* local resource */
-  src: url("/font/linja-pona-4.1.woff") format("woff");
-  /* online resource */
-  /* src: url("https://realjhoo.com/projects/toki-pona-sitelen/font/linja-pona-4.1.woff") format("woff"); */
+  src: url("../font/linja-pona-4.1.woff") format("woff");
 }
 
 :root {
@@ -36,7 +33,6 @@ body {
 
 .title {
   font-size: 1.4rem;
-  text-align: center;
   padding: 1rem;
 }
 
@@ -125,9 +121,8 @@ body {
 
 .toki-pona {
   font-family: var(--toki-font);
-  /* font-feature-settings: "liga" 1 ", " clig " 1", "calt" 1 ", " kern " 1",
-    "mark" 1; */
-  /* text-rendering: optimizeLegibility; */
+  font-feature-settings: "liga" 1, " clig " 1, "calt" 1, " kern " 1, "mark" 1;
+  text-rendering: optimizeLegibility;
 }
 
 .center {
