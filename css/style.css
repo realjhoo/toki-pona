@@ -27,13 +27,15 @@ body {
   background-color: var(--main-color);
   color: var(--text-color);
   font-family: var(--text-font);
-  min-height: 640px;
-  min-width: 360px;
 }
 
 .title {
   font-size: 1.4rem;
   padding: 1rem;
+}
+
+.tiny {
+  display: none;
 }
 
 .directions {
@@ -46,7 +48,7 @@ body {
 }
 
 .choice {
-  padding: 0.5rem;
+  padding: 1rem;
   border-top: 1px solid var(--text-color);
   border-left: 1px solid var(--text-color);
   border-right: 1px solid var(--text-color);
@@ -66,7 +68,8 @@ body {
 }
 
 .buttons {
-  padding: 1.5rem;
+  padding: 1rem;
+  margin: 1rem;
 }
 
 .btn_next {
@@ -80,7 +83,6 @@ body {
   font-size: 3rem;
   outline: none;
   padding: 6px 24px;
-  text-decoration: none;
   text-shadow: 0px 1px 0px #528009;
   width: 10rem;
 }
@@ -99,7 +101,6 @@ body {
   cursor: pointer;
   color: var(--text-font);
   padding: 6px 24px;
-  text-decoration: none;
   text-shadow: 0px 1px 0px #528009;
 }
 
@@ -111,7 +112,6 @@ body {
 }
 
 .scoreboard {
-  margin: 1rem;
   padding: 1rem;
   font-size: 2rem;
   border: 1px solid var(--text-color);
@@ -130,9 +130,150 @@ body {
 }
 
 footer {
+  padding-top: 1rem;
+  padding-bottom: 12px;
   position: absolute;
   left: 0;
   bottom: 0;
   height: 50px;
   width: 100%;
+}
+
+/*  *****************   MEDIA QUERIES    ****************************** */
+@media (max-height: 870px) {
+  footer {
+    position: relative;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+  .tiny {
+    display: none;
+  }
+
+  footer {
+    position: relative;
+  }
+}
+/* iPad Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+  .title {
+    font-size: 1rem;
+    padding: 0.5rem;
+    padding-bottom: 0;
+  }
+
+  .directions {
+    display: none;
+  }
+
+  .question {
+    padding: 0.8rem;
+    padding-top: 0;
+  }
+
+  .choice {
+    padding: 0.8rem;
+    width: 33%;
+  }
+
+  .buttons {
+    padding: 1rem;
+    margin: 1rem;
+    padding-bottom: 12px;
+  }
+
+  .radios {
+    display: inline-block;
+    margin-left: 38%;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .rdo {
+    padding-left: 2rem;
+  }
+
+  .scoreboard {
+    padding: 0.4rem;
+    font-size: 1.5rem;
+    width: 33%;
+    margin: auto;
+  }
+}
+
+/* Galaxy S5 Portrait */
+@media screen and (device-width: 360px) and (device-height: 640px) and (orientation: portrait) {
+  .title {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    padding-bottom: 0;
+  }
+
+  .directions {
+    display: none;
+  }
+
+  .question {
+    font-size: 6rem;
+    padding: 1rem;
+    padding-top: 0;
+  }
+
+  .choice {
+    padding: 0.5rem;
+  }
+
+  .buttons {
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
+
+  .btn_next {
+    font-size: 1.7rem;
+  }
+
+  .radios {
+    display: inline-block;
+    margin-left: 15%;
+    padding-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .rdo {
+    padding-left: 2rem;
+  }
+
+  .scoreboard {
+    padding: 0.6rem;
+    font-size: 1.6rem;
+    width: 85%;
+    margin: auto;
+  }
+}
+
+/* Galaxy S5 Landscape */
+@media screen and (device-width: 640px) and (device-height: 360px) and (orientation: landscape) {
+  .title {
+    visibility: hidden;
+  }
+
+  .tiny {
+    visibility: visible;
+    display: block;
+  }
+
+  .directions,
+  .question,
+  .choice,
+  .buttons,
+  .radios,
+  .scoreboard {
+    display: none;
+  }
+
+  footer {
+    padding-top: 4.5rem;
+    position: relative;
+  }
 }
