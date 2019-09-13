@@ -1,3 +1,8 @@
+const color_correct = "#afe632";
+const color_wrong = "#ff0403";
+const off_black = "#333";
+const off_white = "#f4f4f4";
+
 function score_plus() {
   score = document.getElementById("score").innerText;
   score++;
@@ -23,12 +28,12 @@ function answer_check() {
       let glyph = document.getElementById("glyph").innerText;
       answer = event.target.innerText;
       if (glyph === answer) {
-        event.target.style.backgroundColor = "#afe632";
-        event.target.style.color = "#333";
+        event.target.style.backgroundColor = color_correct;
+        event.target.style.color = off_black;
         score_plus();
       } else {
-        event.target.style.backgroundColor = "#ff0403";
-        event.target.style.color = "#f4f4f4";
+        event.target.style.backgroundColor = color_wrong;
+        event.target.style.color = off_white;
         score_minus();
       }
     });
@@ -37,9 +42,9 @@ function answer_check() {
 
 function clear_board() {
   for (let i = 0; i < 4; i++) {
-    choice = "choice" + i;
-    document.getElementById("choice-" + i).style.backgroundColor = "#333";
-    document.getElementById("choice-" + i).style.color = "#f4f4f4";
+    choice = "choice-" + i;
+    document.getElementById(choice).style.backgroundColor = off_black;
+    document.getElementById(choice).style.color = off_white;
   }
 }
 
@@ -73,7 +78,6 @@ function no_dupes() {
 function words() {
   for (let i = 0; i < 4; i++) {
     random = random_num(nimi.length);
-    console.log(nimi.length);
     document.getElementById("choice-" + i).innerText = nimi[random];
   }
   random = random_num(3);

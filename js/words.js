@@ -1,4 +1,4 @@
-var nimi = [
+let nimi = [
   "a",
   "akesi",
   "ala",
