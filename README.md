@@ -26,7 +26,7 @@ Although Toki Pona Practive version 1 was a straight web app, I wanted to create
 
 ## The App
 
-Based on the settings you select, TTP2 will present the question as a glyph (sitelen), a Toki Pona word (nimi) or an English word or phrase. You may choose to show only single Toki Pona words, or Toki Pona compund words. The app will give you four definitions to choose from. If you are set to show a sitelen as the question, the app will offer nimi. If you are set to show nimi, the app will offer English, and if you are set to offer questions in English, the app will offer nimi as answers. When you click on your answer, you will recieve immediate feedback. If you are correct, the answer you chose will turn green. If you are wrong, it will go red. Your score is instantly adjusted as well. Click the big button to move on to the next question.
+Based on the settings you select, TTP2 will present the question as a glyph (sitelen), a Toki Pona word (nimi) or an English word or phrase. You may choose to show only single Toki Pona words, or Toki Pona compound words. The app will give you four definitions to choose from. If you are set to show a sitelen as the question, the app will offer nimi. If you are set to show nimi, the app will offer English, and if you are set to offer questions in English, the app will offer nimi as answers. When you click on your answer, you will recieve immediate feedback. If you are correct, the answer you chose will turn green. If you are wrong, it will go red. Your score is instantly adjusted as well. Click the big button to move on to the next question.
 
 ## The Interface Language
 
