@@ -30,7 +30,7 @@ Based on the settings you select, TTP2 will present the question as a glyph (sit
 
 ## The Interface Language
 
-The interface is in English. Future upgardes will incluse an option to display the interface in Toki Pona (as was the case with TPP1), as well as Toki Pona glyphs and possibly even Esperanto. The code for this change will be built out such that all strings could be deployed in any given laguage. That way, if anyone wants to contribute a Japanese or other language translation, it could easily be deployed in a minor update.
+The interface is in English. Future upgrades will include an option to display the interface in Toki Pona (as was the case with TPP1), as well as Toki Pona glyphs and possibly even Esperanto. The code for this change will be built out such that all strings could be deployed in any given laguage. That way, if anyone wants to contribute a Japanese or other language translation, it could easily be deployed in a minor update.
 
 ## Deployment
 
