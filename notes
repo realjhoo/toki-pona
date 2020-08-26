@@ -1,4 +1,79 @@
-Toki Pona App Notes
+Version 2.0 Notes
+------------------
+Goal: Create a React Native App and Standard Web Page that:
+   toki pona sitelen -> toki pona definitions
+   toki pona words -> answer English definitions
+   English definitions -> answers toki pona
+   Stores configuration
+   Has light and dark mode
+   All GUI text English or toki pona or sitelen
+   Possible Esperanto version/option
+
+
+P-Code
+-------------------
+
+sitelen font is set in css - change styles to change font
+
+If setting = Sitelen (Question is in sitelen) then
+   ANSWER IS ONE TOKI PONA WORD
+   gin rnd num between 1 and 120
+   get sitelen (question)
+   [to gin 4 random answers]
+      repeat 4 times
+         gin rnd # between 1 and 120
+         fill answer slot with random answer
+      gin rnd # between 1 and 4
+      insert correct answer at rnd #
+   check that there are no duplicates
+   if dulicates then regenerate entire set
+
+If setting = English (question is ion English) then
+   ANSWER MAYBE BE MULTIPLE ENGLISH WORDS
+   gin rnd num between 1 and 120
+   determine # of English definitions
+      gin rnd # between 1 and # of definitions
+      choose definition for QUESTION (correct answer)
+   [to gin 4 random answers]
+      repeat 4 times
+         gin rnd # between 1 and 120
+         fill answer slot with random answer
+      end repeat   
+      gin rnd # between 1 and 4
+      insert correct answer at rnd #
+   check that there are no duplicates
+   if dulicates then regenerate entire set
+
+If setting = toki pona (question is in toki pona) then
+   ANSWER MAYBE BE MULTIPLE ENGLISH WORDS
+   gin rnd num between 1 and 120
+   get toki pona word (question)
+   determine # of English definitions
+      gin # between 1 and # of definitions
+      choose this definition (correct answer)
+   [to gin 4 random answers]
+      repeat 4 times
+         gin rnd # between 1 and 120
+         determine # of English definitions
+            gin rnd # between 1 and # of definitions
+            choose definition for question (wrong answer)
+            fill answer slot with random answer
+      gin rnd # between 1 and 4
+      insert correct answer at rnd #
+   check that there are no duplicates
+   if dulicates then regenerate entire set
+
+Object Notes
+-------------
+toki_pona_word {
+   englisg 1,
+   english 2,
+   englisg 3,
+   etc
+}
+
+
+Toki Pona Version 1.0 App Notes
 
 ****************************************************************
 NEEDS COMPOUND WORDS FROM FONT - done
