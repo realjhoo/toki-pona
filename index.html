@@ -4,22 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width", initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Toki Pona Sitelen</title>
+    <title>Toki Pona Practice 2</title>
   </head>
   <body>
     <div class="title center">
-      <h1 class="tp-title">Toki Pona Sitelen</h1>
-      <h1 class="toki-pona">toki-pona sitelen</h1>
+      <h1 class="tp-title">Toki Pona Practice 2</h1>
+      <h1 class="tp-glyphs">toki-pona sitelen en nimi</h1>
       <h1 class="tiny">Something went wrong. Unfortunate.</h1>
     </div>
 
-    <!-- BEGIN APP HERE -->
+    <!-- Directions -->
     <section class="directions center">
-      seme nimi sama li sama sitelen?
+      Choose the best answer
     </section>
 
-    <section class="question toki-pona center" id="glyph"></section>
+    <!-- Question -->
+    <section class="question tp-glyphs center" id="glyph"></section>
+    <!-- temp - use these id -->
+    <section class="question latin center" id="tp-word"></section>
+    <section class="question latin center" id="en-word"></section>
 
+    <!-- Answer Choices -->
     <section class="choices center">
       <ul>
         <li class="choice choice-0" id="choice-0"></li>
@@ -29,34 +34,76 @@
       </ul>
     </section>
 
+    <!-- New Question Button -->
     <section class="buttons center">
-      <button class="btn_next" id="btn_next">
+      <button class="btn-next tp-glyphs" id="btn-next">
         sin
       </button>
     </section>
 
-    <section class="radios">
-      <label class="rdo">
-        <input type="radio" name="words" id="rdo-words" checked />
-        <span>nimi</span>
-      </label>
+    <!-- Display settings button -->
+    <div class="buttons center">
+      <button class="btn-settings" id="btn-settings">Settings</button>
+    </div>
 
-      <label class="rdo">
-        <input type="radio" name="words" id="rdo-compound" />
-        <span>nimi nimi</span>
-      </label>
-    </section>
+    <!-- Options (make this a popup)-->
+    <div class="radio-settings">
+      <span>Settings</span>
+      <section class="glyph-display-setting">
+        <span class="directions"
+          >Would you like to display the questions as single words or compound
+          words?</span
+        >
+        <label>
+          <input type="radio" name="words" id="radio-single" checked />
+          <span>Single </span>
+        </label>
 
+        <label>
+          <input type="radio" name="words" id="radio-compound" />
+          <span>Compound </span>
+        </label>
+      </section>
+
+      <section class="question-display-settings">
+        <span class="directions"
+          >How would you like the question displayed?</span
+        >
+        <label>
+          <input
+            type="radio"
+            name="question-format"
+            id="radio-tp-glyph"
+            checked
+          />
+          <span>Toki Pona Glyphs</span>
+        </label>
+
+        <label>
+          <input type="radio" name="question-format" id="radio-tp-words" />
+          <span>Toki Pona Words</span>
+        </label>
+
+        <label>
+          <input type="radio" name="question-format" id="radio-en-words" />
+          <span>English Words</span>
+        </label>
+      </section>
+    </div>
+
+    <!-- Scoreboard -->
     <section class="scoreboard center">
       sina jo e <span class="score" id="score">0</span> pona!
     </section>
 
+    <!-- Footer -->
     <footer class="center">
-      <p class="toki-pona">nimi mi jan [_uta_walo_en]</p>
-      <p>&copy; 2019 jan Uwe</p>
+      <p class="tp-glyphs">nimi mi jan [_uta_walo_en]</p>
+      <p>&copy; 2019 - 2020 jan Uwe</p>
     </footer>
     <script src="js/words.js"></script>
     <script src="js/compounds.js"></script>
+    <script src="js/dictionary.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

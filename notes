@@ -72,6 +72,31 @@ toki_pona_word {
    etc
 }
 
+Q&A Display Logic
+-----------
+If user chooses tp-glyphs
+   QUESTION
+      add class of tp-glyphs
+      remove class of tp-words and en-words
+   ANSWER
+      add class tp-words
+      remove class en-words
+
+If user chooses tp-words
+   QUESTION
+      add class of tp-words
+      remove class of en-words & tp-glyphs
+   ANSWER
+      add class en-words
+      remove class tp-words
+
+If user chooses en-words
+   QUESTION
+      add class of en-words
+      remove class of tp-glyphs & tp-words
+   ANSWER
+      add class tp-words
+      remove en-words
 
 Toki Pona Version 1.0 App Notes
 

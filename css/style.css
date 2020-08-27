@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 @font-face {
@@ -12,10 +13,13 @@
   --toki-font: linja-pona;
 }
 
-* {
-  box-sizing: border-box;
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 html {
@@ -39,12 +43,20 @@ body {
 }
 
 .directions {
-  padding-top: 0.6rem;
+  font-weight: 500;
+  padding-top: 0.7rem;
+  padding-bottom: 12px;
 }
 
 .question {
   font-size: 6rem;
   padding: 1.2rem;
+}
+
+/* TEMPORARY NO SHOW */
+#tp-word,
+#en-word {
+  display: none;
 }
 
 .choice {
@@ -68,11 +80,12 @@ body {
 }
 
 .buttons {
-  padding: 1rem;
-  margin: 1rem;
+  /* padding: 0.1rem; */
+  margin: 3rem;
 }
 
-.btn_next {
+.btn-next,
+.btn-settings {
   background-color: #afe632;
   background: linear-gradient(to bottom, #afe632 5%, #77a809 100%);
   border-radius: 6px;
@@ -87,12 +100,14 @@ body {
   width: 10rem;
 }
 
-.btn_next:hover {
+.btn-next:hover,
+.btn-settings:hover {
   background: linear-gradient(to bottom, #77a809 5%, #89c403 100%);
   background-color: #77a809;
 }
 
-.btn_next:active {
+.btn-next:active,
+.btn-settings:active {
   box-shadow: inset 0px 1px 0px 0px #a4e271;
   background: linear-gradient(to bottom, #89c403 5%, #77a809 100%);
   background-color: #89c403;
@@ -104,11 +119,21 @@ body {
   text-shadow: 0px 1px 0px #528009;
 }
 
-.radios {
+.btn-settings {
+  font-size: 1.7rem;
+}
+
+.radio-settings,
+.glyph-display-setting,
+.question-display-settings {
   display: grid;
-  padding-bottom: 1rem;
-  justify-items: center;
+  padding-bottom: 0.7rem;
+  /* justify-items: center; */
   font-size: 1.2rem;
+}
+
+.radio-settings {
+  display: none;
 }
 
 .scoreboard {
@@ -119,7 +144,8 @@ body {
   margin: auto;
 }
 
-.toki-pona {
+/* this class renders glyphs */
+.tp-glyphs {
   font-family: var(--toki-font);
   font-feature-settings: "liga" 1, " clig " 1, "calt" 1, " kern " 1, "mark" 1;
   text-rendering: optimizeLegibility;
@@ -183,16 +209,16 @@ footer {
     padding-bottom: 12px;
   }
 
-  .radios {
+  .radio-settings {
     display: inline-block;
     margin-left: 38%;
     padding-bottom: 1rem;
     font-size: 1rem;
   }
 
-  .rdo {
+  /* .rdo {
     padding-left: 2rem;
-  }
+  } */
 
   .scoreboard {
     padding: 0.4rem;
@@ -239,10 +265,10 @@ footer {
     padding-bottom: 1rem;
     font-size: 1.2rem;
   }
-
+  /* 
   .rdo {
     padding-left: 2rem;
-  }
+  } */
 
   .scoreboard {
     padding: 0.6rem;
@@ -267,7 +293,7 @@ footer {
   .question,
   .choice,
   .buttons,
-  .radios,
+  .radio-settings,
   .scoreboard {
     display: none;
   }
