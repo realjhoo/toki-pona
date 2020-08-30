@@ -318,7 +318,7 @@ const tokiPonaWord = [
   { word: "oko", definition: ["eye"] },
   { word: "olin", definition: ["love"] },
   { word: "ona", definition: ["he", "she", "it"] },
-  { word: "open", definition: ["open", "turn on"] },
+  { word: "open", definition: ["open", "turn on", "start", "activate"] },
   {
     word: "pakala",
     definition: [

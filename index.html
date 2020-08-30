@@ -7,6 +7,9 @@
     <title>Toki Pona Practice 2</title>
   </head>
   <body>
+    <!-- Hamburger Menu-->
+
+    <!-- Title and Stuff -->
     <div class="title center">
       <h1 class="tp-title">Toki Pona Practice 2</h1>
       <h1 class="tp-glyphs">toki-pona sitelen en nimi</h1>
@@ -14,15 +17,13 @@
     </div>
 
     <!-- Directions -->
-    <section class="directions center">
-      Choose the best answer
-    </section>
+    <section class="directions center">Choose the best answer</section>
 
     <!-- Question -->
-    <section class="question tp-glyphs center" id="glyph"></section>
+    <!-- <section class="question tp-glyphs center" id="glyph"></section> -->
     <!-- temp - use these id -->
-    <section class="question latin center" id="tp-word"></section>
-    <section class="question latin center" id="en-word"></section>
+    <section class="question tp-word center" id="tp-word"></section>
+    <!-- <section class="question en-word center" id="en-word"></section> -->
 
     <!-- Answer Choices -->
     <section class="choices center">
@@ -36,9 +37,7 @@
 
     <!-- New Question Button -->
     <section class="buttons center">
-      <button class="btn-next tp-glyphs" id="btn-next">
-        sin
-      </button>
+      <button class="btn-next tp-glyphs" id="btn-next">sin</button>
     </section>
 
     <!-- Display settings button -->
@@ -55,7 +54,7 @@
           words?</span
         >
         <label>
-          <input type="radio" name="words" id="radio-single" checked />
+          <input type="radio" name="words" id="radio-single" />
           <span>Single </span>
         </label>
 
@@ -70,12 +69,7 @@
           >How would you like the question displayed?</span
         >
         <label>
-          <input
-            type="radio"
-            name="question-format"
-            id="radio-tp-glyph"
-            checked
-          />
+          <input type="radio" name="question-format" id="radio-tp-glyph" />
           <span>Toki Pona Glyphs</span>
         </label>
 

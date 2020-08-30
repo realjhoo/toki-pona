@@ -22,7 +22,7 @@ The purpose of this app is to let me practice vocabulary and their associated gl
 
 ## React Native
 
-Although Toki Pona Practive version 1 was a straight web app, I wanted to create a native app that could be used on Android or iPhone, without the hassle of using a web site. Thus, TPP2 was created using React Native, which allowed me to leverage my Javascript skills to build a native mobile app along side the usual web app. Any faults or bugs that TTP2 may have are entirely my fault. Sorry.
+Although Toki Pona Practice version 1 was a straight web app, I wanted to create a native app that could be used on Android or iPhone, without the hassle of using a web site. Thus, TPP2 was created using React Native, which allowed me to leverage my Javascript skills to build a native mobile app along side the usual web app. Any faults or bugs that TTP2 may have are entirely my fault. Sorry.
 
 ## The App
 
