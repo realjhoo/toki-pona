@@ -19,7 +19,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  max-width: 100%;
+  /* max-width: 100%; */
 }
 
 html {
@@ -32,6 +32,11 @@ body {
   color: var(--text-color);
   font-family: var(--text-font);
 }
+
+/* HAMBURGER MENU */
+/* .menu {
+  visibility: hidden;
+} */
 
 .title {
   font-size: 1.4rem;
@@ -51,12 +56,6 @@ body {
 .question {
   font-size: 6rem;
   padding: 1.2rem;
-}
-
-/* TEMPORARY NO SHOW */
-#tp-word,
-#en-word {
-  display: none;
 }
 
 .choice {
@@ -121,19 +120,6 @@ body {
 
 .btn-settings {
   font-size: 1.7rem;
-}
-
-.radio-settings,
-.glyph-display-setting,
-.question-display-settings {
-  display: grid;
-  padding-bottom: 0.7rem;
-  /* justify-items: center; */
-  font-size: 1.2rem;
-}
-
-.radio-settings {
-  display: none;
 }
 
 .scoreboard {

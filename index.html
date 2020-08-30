@@ -3,11 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width", initial-scale=1.0" />
+    <link rel="stylesheet" href="css/hamburger.css" />
     <link rel="stylesheet" href="css/style.css" />
+
     <title>Toki Pona Practice 2</title>
   </head>
   <body>
-    <!-- Hamburger Menu-->
+    <!-- * * * HAMBURGER MENU * * * -->
+    <div class="menu-wrap">
+      <input type="checkbox" class="toggle" />
+      <div class="hamburger"><div></div></div>
+      <div class="menu">
+        <div>
+          <div>
+            <h2>Settings</h2>
+            <!-- <section class="glyph-display-setting"> -->
+            <span class="directions"
+              >Would you like to display the questions as single words or
+              compound words?</span
+            >
+            <ul>
+              <li>
+                <label>
+                  <input type="radio" name="words" id="radio-single" />
+                  <span>Single </span>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input type="radio" name="words" id="radio-compound" />
+                  <span>Compound </span>
+                </label>
+              </li>
+              <!-- </ul> -->
+              <!-- </section> -->
+
+              <!-- <section class="question-display-settings"> -->
+              <span class="directions"
+                >How would you like the question displayed?</span
+              >
+              <!-- <ul> -->
+              <li>
+                <label>
+                  <input
+                    type="radio"
+                    name="question-format"
+                    id="radio-tp-glyph"
+                  />
+                  <span>Toki Pona Glyphs</span>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input
+                    type="radio"
+                    name="question-format"
+                    id="radio-tp-words"
+                  />
+                  <span>Toki Pona Words</span>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input
+                    type="radio"
+                    name="question-format"
+                    id="radio-en-words"
+                  />
+                  <span>English Words</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- * * * END OF HAMBURGER  * * *-->
 
     <!-- Title and Stuff -->
     <div class="title center">
@@ -43,46 +117,6 @@
     <!-- Display settings button -->
     <div class="buttons center">
       <button class="btn-settings" id="btn-settings">Settings</button>
-    </div>
-
-    <!-- Options (make this a popup)-->
-    <div class="radio-settings">
-      <span>Settings</span>
-      <section class="glyph-display-setting">
-        <span class="directions"
-          >Would you like to display the questions as single words or compound
-          words?</span
-        >
-        <label>
-          <input type="radio" name="words" id="radio-single" />
-          <span>Single </span>
-        </label>
-
-        <label>
-          <input type="radio" name="words" id="radio-compound" />
-          <span>Compound </span>
-        </label>
-      </section>
-
-      <section class="question-display-settings">
-        <span class="directions"
-          >How would you like the question displayed?</span
-        >
-        <label>
-          <input type="radio" name="question-format" id="radio-tp-glyph" />
-          <span>Toki Pona Glyphs</span>
-        </label>
-
-        <label>
-          <input type="radio" name="question-format" id="radio-tp-words" />
-          <span>Toki Pona Words</span>
-        </label>
-
-        <label>
-          <input type="radio" name="question-format" id="radio-en-words" />
-          <span>English Words</span>
-        </label>
-      </section>
     </div>
 
     <!-- Scoreboard -->
