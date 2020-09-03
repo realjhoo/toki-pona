@@ -16,8 +16,7 @@
       <div class="menu">
         <div>
           <div>
-            <h2>Settings</h2>
-            <!-- <section class="glyph-display-setting"> -->
+            <h2 class="settings-header">Settings</h2>
             <span class="directions"
               >Would you like to display the questions as single words or
               compound words?</span
@@ -26,24 +25,18 @@
               <li>
                 <label>
                   <input type="radio" name="words" id="radio-single" />
-                  <span>Single </span>
+                  <span>Allow Single Words or Glyphs Only </span>
                 </label>
               </li>
-
               <li>
                 <label>
                   <input type="radio" name="words" id="radio-compound" />
-                  <span>Compound </span>
+                  <span>Allow Compound Words and Glyphs </span>
                 </label>
               </li>
-              <!-- </ul> -->
-              <!-- </section> -->
-
-              <!-- <section class="question-display-settings"> -->
               <span class="directions"
                 >How would you like the question displayed?</span
               >
-              <!-- <ul> -->
               <li>
                 <label>
                   <input
@@ -54,7 +47,6 @@
                   <span>Toki Pona Glyphs</span>
                 </label>
               </li>
-
               <li>
                 <label>
                   <input
@@ -65,7 +57,6 @@
                   <span>Toki Pona Words</span>
                 </label>
               </li>
-
               <li>
                 <label>
                   <input
@@ -86,8 +77,12 @@
     <!-- Title and Stuff -->
     <div class="title center">
       <h1 class="tp-title">Toki Pona Practice 2</h1>
-      <h1 class="tp-glyphs">toki-pona sitelen en nimi</h1>
-      <h1 class="tiny">Something went wrong. Unfortunate.</h1>
+      <h2 class="">toki pona sona tu</h2>
+      <h1 class="tp-glyphs">toki-pona sona tu</h1>
+
+      <h2 class="error">Something went wrong. Unfortunate.</h2>
+      <h3 class="error">toki pona sona tu li pakala. ike.</h3>
+      <h2 class="error tp-glyphs">toki-pona sona tu li pakala. ike.</h2>
     </div>
 
     <!-- Directions -->
@@ -96,7 +91,7 @@
     <!-- Question -->
     <!-- <section class="question tp-glyphs center" id="glyph"></section> -->
     <!-- temp - use these id -->
-    <section class="question tp-word center" id="tp-word"></section>
+    <section class="question tp-glyphs tp-word center" id="tp-word"></section>
     <!-- <section class="question en-word center" id="en-word"></section> -->
 
     <!-- Answer Choices -->
@@ -113,11 +108,6 @@
     <section class="buttons center">
       <button class="btn-next tp-glyphs" id="btn-next">sin</button>
     </section>
-
-    <!-- Display settings button -->
-    <div class="buttons center">
-      <button class="btn-settings" id="btn-settings">Settings</button>
-    </div>
 
     <!-- Scoreboard -->
     <section class="scoreboard center">

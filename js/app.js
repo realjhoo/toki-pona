@@ -7,7 +7,7 @@ function getRandomNumber(max, min) {
 
 //                  *** LOCAL STORAGE ***
 // --------------------------------------------------------
-function loadSettings() {
+function getSettings() {
   // retrieve the real values and set defaults
   let singleWordsSetting = window.localStorage.getItem("Single") || "true";
   let compoundWordsSetting = window.localStorage.getItem("Compound") || "false";
@@ -79,57 +79,123 @@ function saveSettings() {
 
 // --------------------------------------------------------
 function handleAnswerClick() {
+  // this event listener checks the answer
   const choice = document.querySelectorAll(".choice");
 
   for (let i = 0; i < 4; i++) {
-    choice[i].addEventListener("click", (event) => {});
+    const color_correct = "#afe632";
+    const color_wrong = "#ff0403";
+    const off_black = "#333";
+    const off_white = "#f4f4f4";
+
+    choice[i].addEventListener("click", (event) => {
+      // get answer from the DOM
+      let answer = document.querySelector(".question").innerText;
+      // compare to clicked answer
+      let chosenAnswer = event.target.innerText;
+      if (answer === chosenAnswer) {
+        event.target.style.backgroundColor = color_correct;
+        event.target.style.color = off_black;
+        //   score_plus();
+      } else {
+        event.target.style.backgroundColor = color_wrong;
+        event.target.style.color = off_white;
+        //   score_minus();
+      }
+    });
   }
-  // store the question in glyph
-  // let glyph = document.getElementById("glyph").innerText;
-  // // store the answer you clicked on
-  // answer = event.target.innerText;
-  // // compare q and a
-  // if (glyph === answer) {
-  //   event.target.style.backgroundColor = color_correct;
-  //   event.target.style.color = off_black;
-  //   score_plus();
-  // } else {
-  //   event.target.style.backgroundColor = color_wrong;
-  //   event.target.style.color = off_white;
-  //   score_minus();
-  // }
 }
 
 // --------------------------------------------------------
-function handleSettingsButton() {
-  const btnSettings = document.querySelector(".btn-settings");
-  // TURN INTO MODAL NEEDS CONTAINER
-  btnSettings.addEventListener("click", (event) => {
-    // do something
-    const radioSettings = (document.querySelector(
-      ".radio-settings"
-    ).style.display = "grid");
-  });
+function handleSettingChange() {
+  // set event listeners on radio buttons
+  let allRadioButtons = document.querySelectorAll("input[type=radio]");
+
+  for (let i = 0; i < allRadioButtons.length; i++) {
+    allRadioButtons[i].addEventListener("change", (event) => {
+      saveSettings();
+    });
+  }
 }
 
 // --------------------------------------------------------
-function main() {}
-loadSettings();
-// choose which question and answers to get based on settings
+function glyphQuestion(useThisDictionary) {
+  for (let i = 0; i < 4; i++) {
+    // TEMP VALUE OF DICTIONARY
+    useThisDictionary = 0;
+    if (useThisDictionary === 0) {
+      document.getElementById("choice-" + i).innerText =
+        tokiPonaWord[getRandomNumber(0, tokiPonaWord.length)].word;
+    }
+  }
+  // THIS CHOSES A CORRECT ANSWER FROM ONE OF THE CHOICES
+  let answer = document.getElementById("choice-" + getRandomNumber(0, 3))
+    .innerText;
+  document.querySelector(".question").innerText = answer;
+}
 
-// saveSettings(); <-- call save settings on modal close button
+// --------------------------------------------------------
+function main() {
+  // const singleTPWord = 0;
+  // const compoundTPWord = 1;
+  let useThisDictionary = 0;
 
-// check and load single/compound settings <-- DO NEXT
+  // get settings from localStorage
+  getSettings();
+  // if the settings are changed, save them
+  handleSettingChange();
 
-// check and load glyph/nimi/word settings <-- DO NEXY
-// set answer choices
+  // choose which question and answers to get based on settings
 
-// *** initialize the answer click handler ***
-handleAnswerClick();
-// *** initialize settings button
-handleSettingsButton();
+  // *** initialize the answer click handler ***
+  handleAnswerClick();
+
+  // LOGIC CONTROLLED BY SETTINGS
+  // (move to func?)
+  let radioSingle = document.getElementById("radio-single");
+  let radioTPGlyph = document.getElementById("radio-tp-glyph");
+  let radioTPWords = document.getElementById("radio-tp-words");
+  let radioEnWords = document.getElementById("radio-en-words");
+
+  if (radioTPGlyph.checked) {
+    if (radioSingle) {
+      // use single dictionary
+      useThisDictionary = 0;
+      glyphQuestion();
+    } else {
+      // switch bewteen dictionaries randomly
+      useThisDictionary = getRandomNumber(0, 1);
+    }
+    // single glyphs
+  }
+
+  if (radioTPWords.checked) {
+    if (radioSingle) {
+      // use single dictionary
+      useThisDictionary = 0;
+    } else {
+      // use both randomly
+      useThisDictionary = getRandomNumber(0, 1);
+    }
+  }
+
+  if (radioEnWords) {
+    if (radioSingle) {
+      //use single dictionary
+      useThisDictionary = 0;
+    } else {
+      // randomly use both
+      useThisDictionary = getRandomNumber(0, 1);
+    }
+  }
+}
 
 console.log("Show akesi: " + tokiPonaWord[1].word);
 console.log("Show akesi definition: " + tokiPonaWord[1].definition[2]);
+
+console.log("Show snake: " + tokiPonaCompound[1].word);
+console.log("Show snake definition: " + tokiPonaCompound[1].definition[0]);
+
 // --------------------------------------------------------
 main();
+// saveSettings(); <-- call save settings when modal closes

@@ -19,7 +19,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* max-width: 100%; */
 }
 
 html {
@@ -33,17 +32,19 @@ body {
   font-family: var(--text-font);
 }
 
-/* HAMBURGER MENU */
-/* .menu {
-  visibility: hidden;
-} */
+.settings-header {
+  font-size: 2.5rem;
+  text-align: center;
+  padding-top: -3rem;
+  padding-bottom: 3rem;
+}
 
 .title {
   font-size: 1.4rem;
   padding: 1rem;
 }
 
-.tiny {
+.error {
   display: none;
 }
 
@@ -79,12 +80,10 @@ body {
 }
 
 .buttons {
-  /* padding: 0.1rem; */
   margin: 3rem;
 }
 
-.btn-next,
-.btn-settings {
+.btn-next {
   background-color: #afe632;
   background: linear-gradient(to bottom, #afe632 5%, #77a809 100%);
   border-radius: 6px;
@@ -92,21 +91,18 @@ body {
   box-shadow: inset 0px 1px 0px 0px #a4e271;
   color: var(--text-color);
   cursor: pointer;
-  font-size: 3rem;
+  font-size: 4rem;
   outline: none;
-  padding: 6px 24px;
   text-shadow: 0px 1px 0px #528009;
-  width: 10rem;
+  width: 5rem;
 }
 
-.btn-next:hover,
-.btn-settings:hover {
+.btn-next:hover {
   background: linear-gradient(to bottom, #77a809 5%, #89c403 100%);
   background-color: #77a809;
 }
 
-.btn-next:active,
-.btn-settings:active {
+.btn-next:active {
   box-shadow: inset 0px 1px 0px 0px #a4e271;
   background: linear-gradient(to bottom, #89c403 5%, #77a809 100%);
   background-color: #89c403;
@@ -114,17 +110,12 @@ body {
   border: 1px solid #74b807;
   cursor: pointer;
   color: var(--text-font);
-  padding: 6px 24px;
   text-shadow: 0px 1px 0px #528009;
 }
 
-.btn-settings {
-  font-size: 1.7rem;
-}
-
 .scoreboard {
-  padding: 1rem;
-  font-size: 2rem;
+  padding: 0.5rem;
+  font-size: 1.5rem;
   border: 1px solid var(--text-color);
   width: 45%;
   margin: auto;
@@ -142,150 +133,150 @@ body {
 }
 
 footer {
-  padding-top: 1rem;
-  padding-bottom: 12px;
+  /* padding-top: 1rem; */
+  /* padding-bottom: 12px; */
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 50px;
+  height: 40px;
   width: 100%;
 }
 
 /*  *****************   MEDIA QUERIES    ****************************** */
 @media (max-height: 870px) {
-  footer {
+  /* footer {
     position: relative;
-  }
+  } */
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
+/* @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
   .tiny {
     display: none;
-  }
+  } */
 
-  footer {
+/* footer {
     position: relative;
   }
-}
+} */
 /* iPad Landscape */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
-  .title {
+  /* .title {
     font-size: 1rem;
     padding: 0.5rem;
     padding-bottom: 0;
-  }
+  } */
 
-  .directions {
+  /* .directions {
     display: none;
-  }
+  } */
 
-  .question {
+  /* .question {
     padding: 0.8rem;
     padding-top: 0;
-  }
+  } */
 
-  .choice {
+  /* .choice {
     padding: 0.8rem;
     width: 33%;
-  }
+  } */
 
-  .buttons {
+  /* .buttons {
     padding: 1rem;
     margin: 1rem;
     padding-bottom: 12px;
-  }
+  } */
 
-  .radio-settings {
+  /* .radio-settings {
     display: inline-block;
     margin-left: 38%;
     padding-bottom: 1rem;
     font-size: 1rem;
-  }
+  } */
 
   /* .rdo {
     padding-left: 2rem;
   } */
-
+  /* 
   .scoreboard {
     padding: 0.4rem;
     font-size: 1.5rem;
     width: 33%;
     margin: auto;
-  }
+  } */
 }
 
 /* Galaxy S5 Portrait */
 @media screen and (device-width: 360px) and (device-height: 640px) and (orientation: portrait) {
-  .title {
+  /* .title {
     font-size: 0.8rem;
     padding: 0.5rem;
     padding-bottom: 0;
-  }
+  } */
 
-  .directions {
+  /* .directions {
     display: none;
-  }
+  } */
 
-  .question {
+  /* .question {
     font-size: 6rem;
     padding: 1rem;
     padding-top: 0;
-  }
+  } */
 
-  .choice {
+  /* .choice {
     padding: 0.5rem;
-  }
+  } */
 
-  .buttons {
+  /* .buttons {
     padding: 0.5rem;
     margin: 0.5rem;
-  }
+  } */
 
-  .btn_next {
+  /* .btn_next {
     font-size: 1.7rem;
-  }
+  } */
 
-  .radios {
+  /* .radios {
     display: inline-block;
     margin-left: 15%;
     padding-bottom: 1rem;
     font-size: 1.2rem;
-  }
+  } */
   /* 
   .rdo {
     padding-left: 2rem;
   } */
 
-  .scoreboard {
+  /* .scoreboard {
     padding: 0.6rem;
     font-size: 1.6rem;
     width: 85%;
     margin: auto;
-  }
+  } */
 }
 
 /* Galaxy S5 Landscape */
 @media screen and (device-width: 640px) and (device-height: 360px) and (orientation: landscape) {
-  .title {
+  /* .title {
     visibility: hidden;
-  }
+  } */
 
-  .tiny {
+  /* .tiny {
     visibility: visible;
     display: block;
-  }
+  } */
 
-  .directions,
+  /* .directions,
   .question,
   .choice,
   .buttons,
   .radio-settings,
   .scoreboard {
     display: none;
-  }
+  } */
 
-  footer {
+  /* footer {
     padding-top: 4.5rem;
     position: relative;
-  }
+  } */
 }
