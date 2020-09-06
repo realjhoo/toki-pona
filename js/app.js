@@ -1,13 +1,16 @@
+"use strict";
 // includes dictionary.js
 
 // --------------------------------------------------------
-function getRandomNumber(max, min) {
+function getRandomNumber(min, max) {
+  // working
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 //                  *** LOCAL STORAGE ***
 // --------------------------------------------------------
 function getSettings() {
+  // working
   // retrieve the real values and set defaults
   let singleWordsSetting = window.localStorage.getItem("Single") || "true";
   let compoundWordsSetting = window.localStorage.getItem("Compound") || "false";
@@ -15,16 +18,7 @@ function getSettings() {
   let tpWordsSetting = window.localStorage.getItem("TPWord") || "false";
   let enWordsSetting = window.localStorage.getItem("EnglishWord") || "true";
 
-  // log out
-  // console.log(
-  //   "LOAD: ",
-  //   singleWordsSetting,
-  //   compoundWordsSetting,
-  //   tpGlyphsSetting,
-  //   tpWordsSetting,
-  //   enWordsSetting
-  // );
-
+  //  this converts strings to boolean using logic
   singleWordsSetting = singleWordsSetting === "true";
   compoundWordsSetting = compoundWordsSetting === "true";
   tpGlyphsSetting = tpGlyphsSetting === "true";
@@ -41,8 +35,8 @@ function getSettings() {
 
 // --------------------------------------------------------
 function saveSettings() {
+  // working
   // get the radio buttons state -> convert to string
-
   let singleWordsSetting = document
     .getElementById("radio-single")
     .checked.toString();
@@ -59,17 +53,7 @@ function saveSettings() {
     .getElementById("radio-en-words")
     .checked.toString();
 
-  // log out
-  // console.log(
-  //   "SAVE: ",
-  //   singleWordsSetting,
-  //   compoundWordsSetting,
-  //   tpGlyphsSetting,
-  //   tpWordsSetting,
-  //   enWordsSetting
-  // );
-
-  // retrieve the real values and set defaults
+  // store the values from the radio buttons
   window.localStorage.setItem("Single", singleWordsSetting);
   window.localStorage.setItem("Compound", compoundWordsSetting);
   window.localStorage.setItem("Glyphs", tpGlyphsSetting);
@@ -79,15 +63,15 @@ function saveSettings() {
 
 // --------------------------------------------------------
 function handleAnswerClick() {
+  // * * * * * THE SCORE PART IS BROKEN * * * * *
   // this event listener checks the answer
   const choice = document.querySelectorAll(".choice");
+  const color_correct = "#afe632";
+  const color_wrong = "#ff0403";
+  const off_black = "#333";
+  const off_white = "#f4f4f4";
 
   for (let i = 0; i < 4; i++) {
-    const color_correct = "#afe632";
-    const color_wrong = "#ff0403";
-    const off_black = "#333";
-    const off_white = "#f4f4f4";
-
     choice[i].addEventListener("click", (event) => {
       // get answer from the DOM
       let answer = document.querySelector(".question").innerText;
@@ -113,6 +97,7 @@ function handleSettingChange() {
 
   for (let i = 0; i < allRadioButtons.length; i++) {
     allRadioButtons[i].addEventListener("change", (event) => {
+      // if any buttons are changed, commit to local storage
       saveSettings();
     });
   }
@@ -120,18 +105,60 @@ function handleSettingChange() {
 
 // --------------------------------------------------------
 function glyphQuestion(useThisDictionary) {
+  // add tp-glyphs class
+  document.querySelector(".question").classList.add("tp-glyphs");
+  // need to set 0 to tokiPonaWord and 1 to tokiPonaCompound
   for (let i = 0; i < 4; i++) {
-    // TEMP VALUE OF DICTIONARY
-    useThisDictionary = 0;
     if (useThisDictionary === 0) {
       document.getElementById("choice-" + i).innerText =
         tokiPonaWord[getRandomNumber(0, tokiPonaWord.length)].word;
+    } else {
+      // use the other dictionary (tokiPonaCompound)
     }
   }
-  // THIS CHOSES A CORRECT ANSWER FROM ONE OF THE CHOICES
+
+  // TODO * * *  CHECK FOR DUPES * * *
+
+  // Choose a correct answer from one of the choices and put it in DOM
   let answer = document.getElementById("choice-" + getRandomNumber(0, 3))
     .innerText;
   document.querySelector(".question").innerText = answer;
+}
+
+// --------------------------------------------------------
+function tokiPonaQuestion(useThisDictionary) {
+  "use strict";
+  let storeRandomNumber = [];
+  let randomWord = 0;
+  let chosenAnswer = 0;
+
+  // remove tp-glyphs class to show toki pona word, not glyph
+  document.querySelector(".question").classList.remove("tp-glyphs");
+
+  // loop to create 4 answer choices
+  for (let i = 0; i < 4; i++) {
+    // store rnd# so we can match question/answer
+    randomWord = getRandomNumber(0, tokiPonaWord.length - 1);
+
+    // insert 4 random answer choices
+    document.getElementById("choice-" + i).innerText =
+      tokiPonaWord[randomWord].definition[
+        getRandomNumber(0, tokiPonaWord[randomWord].definition.length - 1)
+      ];
+
+    // store all 4 random numbers so we can figure out the question
+    storeRandomNumber[i] = randomWord;
+  }
+
+  // pick a number between 0 - 3 to be the correct answer
+  chosenAnswer = storeRandomNumber[getRandomNumber(0, 3)];
+
+  // get original tp word and and insert as question
+  document.querySelector(".question").innerText =
+    tokiPonaWord[chosenAnswer].word;
+
+  // TODO * * *  CHECK FOR DUPES * * *
+  // TODO * * *  BROKE THE SCORE SYSTEM - FIXIT * * *
 }
 
 // --------------------------------------------------------
@@ -145,44 +172,48 @@ function main() {
   // if the settings are changed, save them
   handleSettingChange();
 
-  // choose which question and answers to get based on settings
-
   // *** initialize the answer click handler ***
   handleAnswerClick();
 
-  // LOGIC CONTROLLED BY SETTINGS
-  // (move to func?)
+  // PROGRAM LOGIC BEGINS - CONTROLLED BY SETTINGS
   let radioSingle = document.getElementById("radio-single");
   let radioTPGlyph = document.getElementById("radio-tp-glyph");
   let radioTPWords = document.getElementById("radio-tp-words");
   let radioEnWords = document.getElementById("radio-en-words");
 
+  // * * *  * * * * * * * * * *  * * * * *
+  // DO SINGLE WORDS FIRST FOR EACH OPTION
+  // * *  * * * * * * * * *  * * * * * * *
+  // glyphs -> tp words
   if (radioTPGlyph.checked) {
     if (radioSingle) {
-      // use single dictionary
+      // use single dictionary for glyphs
       useThisDictionary = 0;
-      glyphQuestion();
-    } else {
-      // switch bewteen dictionaries randomly
-      useThisDictionary = getRandomNumber(0, 1);
-    }
-    // single glyphs
+      glyphQuestion(useThisDictionary);
+    } //else {
+    // switch bewteen dictionaries randomly
+    //useThisDictionary = getRandomNumber(0, 1);
+    //}
   }
 
+  // tp-words -> english words
   if (radioTPWords.checked) {
     if (radioSingle) {
       // use single dictionary
       useThisDictionary = 0;
+      tokiPonaQuestion(useThisDictionary);
     } else {
       // use both randomly
       useThisDictionary = getRandomNumber(0, 1);
     }
   }
 
+  // english -> tp words
   if (radioEnWords) {
     if (radioSingle) {
       //use single dictionary
       useThisDictionary = 0;
+      // englishQuestion();
     } else {
       // randomly use both
       useThisDictionary = getRandomNumber(0, 1);
@@ -198,4 +229,4 @@ console.log("Show snake definition: " + tokiPonaCompound[1].definition[0]);
 
 // --------------------------------------------------------
 main();
-// saveSettings(); <-- call save settings when modal closes
+// TODO * * * * * NEED NEW SCORE SYSTEM
