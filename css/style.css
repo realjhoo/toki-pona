@@ -51,12 +51,12 @@ body {
 .directions {
   font-weight: 500;
   padding-top: 0.7rem;
-  padding-bottom: 12px;
+  /* padding-bottom: 12px; */
 }
 
 .question {
   font-size: 6rem;
-  padding: 1.2rem;
+  /* padding: 1rem; */
 }
 
 .choice {

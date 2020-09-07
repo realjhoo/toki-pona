@@ -1,6 +1,7 @@
 "use strict";
 // includes dictionary.js
-
+// Global Variable (sorry)
+let currentCorrectAnswer = 0;
 // --------------------------------------------------------
 function getRandomNumber(min, max) {
   // working
@@ -73,15 +74,18 @@ function handleAnswerClick() {
 
   for (let i = 0; i < 4; i++) {
     choice[i].addEventListener("click", (event) => {
-      // get answer from the DOM
-      let answer = document.querySelector(".question").innerText;
-      // compare to clicked answer
-      let chosenAnswer = event.target.innerText;
-      if (answer === chosenAnswer) {
+      // get the numbered className of the clicked choice
+      let choiceClass = event.target.classList[1];
+      // chop off the end and convert to a number
+      choiceClass = parseInt(choiceClass.slice(-1));
+      // compare with global current correct answer
+      if (currentCorrectAnswer === choiceClass) {
+        console.log("CORRECT!");
         event.target.style.backgroundColor = color_correct;
         event.target.style.color = off_black;
         //   score_plus();
       } else {
+        console.log("nope!");
         event.target.style.backgroundColor = color_wrong;
         event.target.style.color = off_white;
         //   score_minus();
@@ -118,11 +122,12 @@ function glyphQuestion(useThisDictionary) {
   }
 
   // TODO * * *  CHECK FOR DUPES * * *
-
   // Choose a correct answer from one of the choices and put it in DOM
-  let answer = document.getElementById("choice-" + getRandomNumber(0, 3))
-    .innerText;
+  let chosenAnswerIndex = getRandomNumber(0, 3);
+  let answer = document.getElementById("choice-" + chosenAnswerIndex).innerText;
   document.querySelector(".question").innerText = answer;
+  // set the global current correct answer
+  currentCorrectAnswer = chosenAnswerIndex;
 }
 
 // --------------------------------------------------------
@@ -151,14 +156,17 @@ function tokiPonaQuestion(useThisDictionary) {
   }
 
   // pick a number between 0 - 3 to be the correct answer
-  chosenAnswer = storeRandomNumber[getRandomNumber(0, 3)];
+  let chosenAnswerIndex = getRandomNumber(0, 3);
+  chosenAnswer = storeRandomNumber[chosenAnswerIndex];
+  // set global for answer click styles
+  currentCorrectAnswer = chosenAnswerIndex;
+  console.log("Current Correct Answer: ", currentCorrectAnswer);
 
   // get original tp word and and insert as question
   document.querySelector(".question").innerText =
     tokiPonaWord[chosenAnswer].word;
 
   // TODO * * *  CHECK FOR DUPES * * *
-  // TODO * * *  BROKE THE SCORE SYSTEM - FIXIT * * *
 }
 
 // --------------------------------------------------------
@@ -181,6 +189,7 @@ function main() {
   let radioTPWords = document.getElementById("radio-tp-words");
   let radioEnWords = document.getElementById("radio-en-words");
 
+  // * * *  must be function for SIN button to work!
   // * * *  * * * * * * * * * *  * * * * *
   // DO SINGLE WORDS FIRST FOR EACH OPTION
   // * *  * * * * * * * * *  * * * * * * *
@@ -229,4 +238,4 @@ console.log("Show snake definition: " + tokiPonaCompound[1].definition[0]);
 
 // --------------------------------------------------------
 main();
-// TODO * * * * * NEED NEW SCORE SYSTEM
+// TODO * * * * * USE SIN BUTTON TO RELOAD
