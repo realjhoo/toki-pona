@@ -4,15 +4,12 @@
 let currentCorrectAnswer = 0;
 // --------------------------------------------------------
 function getRandomNumber(min, max) {
-  // working
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-//                  *** LOCAL STORAGE ***
 // --------------------------------------------------------
 function getSettings() {
-  // working
-  // retrieve the real values and set defaults
+  // retrieve the stored values or use defaults
   let singleWordsSetting = window.localStorage.getItem("Single") || "true";
   let compoundWordsSetting = window.localStorage.getItem("Compound") || "false";
   let tpGlyphsSetting = window.localStorage.getItem("Glyphs") || "false";
@@ -36,7 +33,6 @@ function getSettings() {
 
 // --------------------------------------------------------
 function saveSettings() {
-  // working
   // get the radio buttons state -> convert to string
   let singleWordsSetting = document
     .getElementById("radio-single")
@@ -63,8 +59,21 @@ function saveSettings() {
 }
 
 // --------------------------------------------------------
+function score_plus() {
+  let score = document.getElementById("score").innerText;
+  score++;
+  document.getElementById("score").innerText = score;
+}
+
+// --------------------------------------------------------
+function score_minus() {
+  let score = document.getElementById("score").innerText;
+  score--;
+  document.getElementById("score").innerText = score;
+}
+
+// --------------------------------------------------------
 function handleAnswerClick() {
-  // * * * * * THE SCORE PART IS BROKEN * * * * *
   // this event listener checks the answer
   const choice = document.querySelectorAll(".choice");
   const color_correct = "#afe632";
@@ -80,15 +89,15 @@ function handleAnswerClick() {
       choiceClass = parseInt(choiceClass.slice(-1));
       // compare with global current correct answer
       if (currentCorrectAnswer === choiceClass) {
-        console.log("CORRECT!");
+        //        console.log("CORRECT!");
         event.target.style.backgroundColor = color_correct;
         event.target.style.color = off_black;
-        //   score_plus();
+        score_plus();
       } else {
-        console.log("nope!");
+        //      console.log("nope!");
         event.target.style.backgroundColor = color_wrong;
         event.target.style.color = off_white;
-        //   score_minus();
+        score_minus();
       }
     });
   }
@@ -109,9 +118,9 @@ function handleSettingChange() {
 
 // --------------------------------------------------------
 function glyphQuestion(useThisDictionary) {
-  // add tp-glyphs class
+  // add tp-glyphs class to show question in glyph form
   document.querySelector(".question").classList.add("tp-glyphs");
-  // need to set 0 to tokiPonaWord and 1 to tokiPonaCompound
+  // need to set dictionary 0 to tokiPonaWord and 1 to tokiPonaCompound
   for (let i = 0; i < 4; i++) {
     if (useThisDictionary === 0) {
       document.getElementById("choice-" + i).innerText =
@@ -121,18 +130,17 @@ function glyphQuestion(useThisDictionary) {
     }
   }
 
-  // TODO * * *  CHECK FOR DUPES * * *
   // Choose a correct answer from one of the choices and put it in DOM
   let chosenAnswerIndex = getRandomNumber(0, 3);
   let answer = document.getElementById("choice-" + chosenAnswerIndex).innerText;
   document.querySelector(".question").innerText = answer;
   // set the global current correct answer
   currentCorrectAnswer = chosenAnswerIndex;
+  // TODO * * *  CHECK FOR DUPES * * *
 }
 
 // --------------------------------------------------------
 function tokiPonaQuestion(useThisDictionary) {
-  "use strict";
   let storeRandomNumber = [];
   let randomWord = 0;
   let chosenAnswer = 0;
@@ -158,37 +166,85 @@ function tokiPonaQuestion(useThisDictionary) {
   // pick a number between 0 - 3 to be the correct answer
   let chosenAnswerIndex = getRandomNumber(0, 3);
   chosenAnswer = storeRandomNumber[chosenAnswerIndex];
-  // set global for answer click styles
-  currentCorrectAnswer = chosenAnswerIndex;
-  console.log("Current Correct Answer: ", currentCorrectAnswer);
+
+  //  console.log("Current Correct Answer: ", currentCorrectAnswer);
 
   // get original tp word and and insert as question
   document.querySelector(".question").innerText =
     tokiPonaWord[chosenAnswer].word;
 
+  // set the global current correct answer
+  currentCorrectAnswer = chosenAnswerIndex;
   // TODO * * *  CHECK FOR DUPES * * *
 }
 
 // --------------------------------------------------------
-function main() {
-  // const singleTPWord = 0;
-  // const compoundTPWord = 1;
+function englishQuestion() {
+  let storeRandomNumber = [];
+  let randomWord = 0;
+  let chosenAnswer = 0;
+  // question in english -> answers in toki
+  //remove tp-glyph class from .question
+  document.querySelector(".question").classList.remove("tp-glyphs");
+
+  // loop to create 4 answer choices
+  for (let i = 0; i < 4; i++) {
+    randomWord = getRandomNumber(0, tokiPonaWord.length - 1);
+
+    // insert 4 tp word as answer choices
+    document.getElementById("choice-" + i).innerText =
+      tokiPonaWord[randomWord].word;
+
+    // store random num so we can match quest/ans
+    storeRandomNumber[i] = randomWord;
+  }
+
+  // pick a number between 0 - 3 to be the correct answer
+  let chosenAnswerIndex = getRandomNumber(0, 3);
+  chosenAnswer = storeRandomNumber[chosenAnswerIndex];
+
+  // get original tp word and and insert as question
+  document.querySelector(".question").innerText =
+    tokiPonaWord[chosenAnswer].definition[
+      getRandomNumber(0, tokiPonaWord[chosenAnswer].definition.length - 1)
+    ];
+
+  // set the global current correct answer
+  currentCorrectAnswer = chosenAnswerIndex;
+  // TODO * * *  CHECK FOR DUPES * * *
+}
+
+// --------------------------------------------------------
+function handleButtonClick() {
+  const button = document.querySelector(".btn-next");
+
+  button.addEventListener("click", () => {
+    setTheBoard();
+  });
+}
+
+// --------------------------------------------------------
+function clearTheBoard() {
+  //  const color_correct = "#afe632";
+  //  const color_wrong = "#ff0403";
+  const off_black = "#333";
+  const off_white = "#f4f4f4";
+  for (let i = 0; i < 4; i++) {
+    let choice = "choice-" + i;
+    document.getElementById(choice).style.backgroundColor = off_black;
+    document.getElementById(choice).style.color = off_white;
+  }
+}
+
+// --------------------------------------------------------
+function setTheBoard() {
   let useThisDictionary = 0;
-
-  // get settings from localStorage
-  getSettings();
-  // if the settings are changed, save them
-  handleSettingChange();
-
-  // *** initialize the answer click handler ***
-  handleAnswerClick();
-
   // PROGRAM LOGIC BEGINS - CONTROLLED BY SETTINGS
   let radioSingle = document.getElementById("radio-single");
   let radioTPGlyph = document.getElementById("radio-tp-glyph");
   let radioTPWords = document.getElementById("radio-tp-words");
   let radioEnWords = document.getElementById("radio-en-words");
-
+  clearTheBoard();
   // * * *  must be function for SIN button to work!
   // * * *  * * * * * * * * * *  * * * * *
   // DO SINGLE WORDS FIRST FOR EACH OPTION
@@ -222,12 +278,28 @@ function main() {
     if (radioSingle) {
       //use single dictionary
       useThisDictionary = 0;
-      // englishQuestion();
+      englishQuestion();
     } else {
       // randomly use both
       useThisDictionary = getRandomNumber(0, 1);
     }
   }
+}
+
+// --------------------------------------------------------
+function main() {
+  // const singleTPWord = 0;
+  // const compoundTPWord = 1;
+
+  // get settings from localStorage
+  getSettings();
+  // if the settings are changed, save them
+  handleSettingChange();
+
+  // *** initialize the answer click handler ***
+  handleAnswerClick();
+  handleButtonClick();
+  setTheBoard();
 }
 
 console.log("Show akesi: " + tokiPonaWord[1].word);
@@ -238,4 +310,6 @@ console.log("Show snake definition: " + tokiPonaCompound[1].definition[0]);
 
 // --------------------------------------------------------
 main();
-// TODO * * * * * USE SIN BUTTON TO RELOAD
+// TODO * * * * * check dupes
+// TODO * * * * * compound words
+// TODO * * * * * fix up compound dictionary
