@@ -1,3 +1,4 @@
+// toki pona dictionary
 const tokiPonaWord = [
   {
     word: "a",
@@ -85,7 +86,7 @@ const tokiPonaWord = [
       "stay",
     ],
   },
-  { word: "e", definition: ["[object]", "with a pronoun = self"] },
+  { word: "e", definition: ["[object follows]", "self [with pronoun]"] },
   { word: "en", definition: ["and"] },
   {
     word: "esun",
@@ -132,7 +133,8 @@ const tokiPonaWord = [
       "sound",
       "noise",
       "voice",
-      "to make noise or sound",
+      "to make noise",
+      "to make sound",
       "noisy",
       "loud",
     ],
@@ -191,7 +193,7 @@ const tokiPonaWord = [
     ],
   },
   { word: "kute", definition: ["hear", "hearing", "auditory", "ear"] },
-  { word: "la", definition: ["[Context follows]"] },
+  { word: "la", definition: ["[context follows]"] },
   { word: "lape", definition: ["sleep", "rest", "sleeping"] },
   { word: "laso", definition: ["blue", "blue-green"] },
   {
@@ -200,7 +202,7 @@ const tokiPonaWord = [
   },
   { word: "len", definition: ["fabric", "cloth", "clothing"] },
   { word: "lete", definition: ["cold", "uncooked", "raw"] },
-  { word: "li", definition: ["[separates subject sentence]"] },
+  { word: "li", definition: ["[follows subject]"] },
   {
     word: "lili",
     definition: [
@@ -392,7 +394,7 @@ const tokiPonaWord = [
       "right",
     ],
   },
-  { word: "pu", definition: ["interacting with the official Toki Pona book"] },
+  { word: "pu", definition: ["related to the Toki Pona book", "official"] },
   { word: "sama", definition: ["same", "similar", "equal", "alike"] },
   {
     word: "seli",
@@ -466,7 +468,7 @@ const tokiPonaWord = [
   },
   {
     word: "tomo",
-    definition: ["indoor constructed space", "house", "room", "building"],
+    definition: ["indoor space", "house", "room", "building"],
   },
   { word: "tu", definition: ["2", "pair", "dual", "duo", "double"] },
   { word: "unpa", definition: ["sex", "erotic", "sexual"] },
@@ -488,7 +490,7 @@ const tokiPonaWord = [
   },
   { word: "walo", definition: ["white", "light color"] },
   { word: "wan", definition: ["1", "particle", "piece", "one"] },
-  { word: "waso", definition: ["bird", "winged animal", "animal that flies"] },
+  { word: "waso", definition: ["bird", "winged animal", "flying animal"] },
   {
     word: "wawa",
     definition: [
@@ -535,6 +537,8 @@ const tokiPonaWord = [
 ];
 
 // --------------------------------------------------------
+// REDO - this needs more focus on common coumpounds
+// not a phrase book
 const tokiPonaCompound = [
   {
     word: "anpa-lawa",

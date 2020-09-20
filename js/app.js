@@ -1,7 +1,13 @@
+// TTP2 Version B
+// Toki Pona Practice App (Web Version)
+// Copyright (c) 2020 jan Uwe
+// All rights reserved
+// lina pona font credit goes here
 "use strict";
-// includes dictionary.js
-// Global Variable (sorry)
+// dictionary stored in dictionary.js
+// currect answer state
 let currentCorrectAnswer = 0;
+
 // --------------------------------------------------------
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -16,7 +22,7 @@ function getSettings() {
   let tpWordsSetting = window.localStorage.getItem("TPWord") || "false";
   let enWordsSetting = window.localStorage.getItem("EnglishWord") || "true";
 
-  //  this converts strings to boolean using logic
+  //  convert strings to boolean
   singleWordsSetting = singleWordsSetting === "true";
   compoundWordsSetting = compoundWordsSetting === "true";
   tpGlyphsSetting = tpGlyphsSetting === "true";
@@ -74,7 +80,7 @@ function score_minus() {
 
 // --------------------------------------------------------
 function handleAnswerClick() {
-  // this event listener checks the answer
+  // event listener checks the answer & gives visual indicator
   const choice = document.querySelectorAll(".choice");
   const color_correct = "#afe632";
   const color_wrong = "#ff0403";
@@ -117,10 +123,19 @@ function handleSettingChange() {
 }
 
 // --------------------------------------------------------
+function handleButtonClick() {
+  const button = document.querySelector(".btn-next");
+
+  button.addEventListener("click", () => {
+    setTheBoard();
+  });
+}
+
+// --------------------------------------------------------
 function glyphQuestion(useThisDictionary) {
   // add tp-glyphs class to show question in glyph form
   document.querySelector(".question").classList.add("tp-glyphs");
-  // need to set dictionary 0 to tokiPonaWord and 1 to tokiPonaCompound
+  // set dictionary 0 to tokiPonaWord and 1 to tokiPonaCompound
   for (let i = 0; i < 4; i++) {
     if (useThisDictionary === 0) {
       document.getElementById("choice-" + i).innerText =
@@ -130,13 +145,15 @@ function glyphQuestion(useThisDictionary) {
     }
   }
 
-  // Choose a correct answer from one of the choices and put it in DOM
+  // if any answers choices are duplicated reload the board
+  noDupes();
+
+  // randomly choose a correct answer from one of the choices and display
   let chosenAnswerIndex = getRandomNumber(0, 3);
   let answer = document.getElementById("choice-" + chosenAnswerIndex).innerText;
   document.querySelector(".question").innerText = answer;
   // set the global current correct answer
   currentCorrectAnswer = chosenAnswerIndex;
-  // TODO * * *  CHECK FOR DUPES * * *
 }
 
 // --------------------------------------------------------
@@ -163,6 +180,9 @@ function tokiPonaQuestion(useThisDictionary) {
     storeRandomNumber[i] = randomWord;
   }
 
+  // if any answers choices are duplicated reload the board
+  noDupes();
+
   // pick a number between 0 - 3 to be the correct answer
   let chosenAnswerIndex = getRandomNumber(0, 3);
   chosenAnswer = storeRandomNumber[chosenAnswerIndex];
@@ -175,7 +195,6 @@ function tokiPonaQuestion(useThisDictionary) {
 
   // set the global current correct answer
   currentCorrectAnswer = chosenAnswerIndex;
-  // TODO * * *  CHECK FOR DUPES * * *
 }
 
 // --------------------------------------------------------
@@ -199,6 +218,7 @@ function englishQuestion() {
     storeRandomNumber[i] = randomWord;
   }
 
+  noDupes();
   // pick a number between 0 - 3 to be the correct answer
   let chosenAnswerIndex = getRandomNumber(0, 3);
   chosenAnswer = storeRandomNumber[chosenAnswerIndex];
@@ -211,16 +231,6 @@ function englishQuestion() {
 
   // set the global current correct answer
   currentCorrectAnswer = chosenAnswerIndex;
-  // TODO * * *  CHECK FOR DUPES * * *
-}
-
-// --------------------------------------------------------
-function handleButtonClick() {
-  const button = document.querySelector(".btn-next");
-
-  button.addEventListener("click", () => {
-    setTheBoard();
-  });
 }
 
 // --------------------------------------------------------
@@ -244,11 +254,14 @@ function setTheBoard() {
   let radioTPGlyph = document.getElementById("radio-tp-glyph");
   let radioTPWords = document.getElementById("radio-tp-words");
   let radioEnWords = document.getElementById("radio-en-words");
+
+  // remove colors for right/wrong answers
   clearTheBoard();
-  // * * *  must be function for SIN button to work!
+
   // * * *  * * * * * * * * * *  * * * * *
   // DO SINGLE WORDS FIRST FOR EACH OPTION
   // * *  * * * * * * * * *  * * * * * * *
+
   // glyphs -> tp words
   if (radioTPGlyph.checked) {
     if (radioSingle) {
@@ -263,6 +276,7 @@ function setTheBoard() {
 
   // tp-words -> english words
   if (radioTPWords.checked) {
+    console.log("tp words");
     if (radioSingle) {
       // use single dictionary
       useThisDictionary = 0;
@@ -274,7 +288,8 @@ function setTheBoard() {
   }
 
   // english -> tp words
-  if (radioEnWords) {
+  if (radioEnWords.checked) {
+    console.log("english words");
     if (radioSingle) {
       //use single dictionary
       useThisDictionary = 0;
@@ -283,6 +298,27 @@ function setTheBoard() {
       // randomly use both
       useThisDictionary = getRandomNumber(0, 1);
     }
+  }
+}
+
+// --------------------------------------------------------
+function noDupes() {
+  // this is ugly but easy to understand
+  let one = document.getElementById("choice-0").innerText;
+  let two = document.getElementById("choice-1").innerText;
+  let three = document.getElementById("choice-2").innerText;
+  let four = document.getElementById("choice-3").innerText;
+
+  if (
+    one === two ||
+    one === three ||
+    one === four ||
+    two === three ||
+    two === four ||
+    three === four
+  ) {
+    // reload the quiz because there are duplicate answers
+    setTheBoard();
   }
 }
 
@@ -302,6 +338,7 @@ function main() {
   setTheBoard();
 }
 
+// log out exemplars
 console.log("Show akesi: " + tokiPonaWord[1].word);
 console.log("Show akesi definition: " + tokiPonaWord[1].definition[2]);
 
@@ -309,7 +346,9 @@ console.log("Show snake: " + tokiPonaCompound[1].word);
 console.log("Show snake definition: " + tokiPonaCompound[1].definition[0]);
 
 // --------------------------------------------------------
+// Let the app begin
 main();
-// TODO * * * * * check dupes
-// TODO * * * * * compound words
-// TODO * * * * * fix up compound dictionary
+
+// TODO * * * * * re-enable compound words
+// TODO * * * * * fix up compound dictionary ?
+// TODO * * * * * cleanup code

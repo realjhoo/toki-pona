@@ -48,6 +48,10 @@ body {
   display: none;
 }
 
+input:disabled + span {
+  color: #777;
+}
+
 .directions {
   font-weight: 500;
   padding-top: 0.7rem;
@@ -56,7 +60,7 @@ body {
 
 .question {
   font-size: 6rem;
-  /* padding: 1rem; */
+  padding: 0.7rem;
 }
 
 .choice {
@@ -135,148 +139,109 @@ body {
 footer {
   /* padding-top: 1rem; */
   /* padding-bottom: 12px; */
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  /* position: absolute; */
+  /* left: 0; */
+  /* bottom: 0; */
   height: 40px;
   width: 100%;
+  padding-top: 16px;
 }
 
 /*  *****************   MEDIA QUERIES    ****************************** */
-@media (max-height: 870px) {
-  /* footer {
-    position: relative;
-  } */
-}
 
-/* @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
-  .tiny {
-    display: none;
-  } */
-
-/* footer {
-    position: relative;
+/* @mq for-phone-only ------------------------------------------------- */
+@media (max-width: 599px) {
+  .menu span {
+    font-size: 0.9rem;
   }
-} */
-/* iPad Landscape */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
-  /* .title {
-    font-size: 1rem;
-    padding: 0.5rem;
-    padding-bottom: 0;
-  } */
 
-  /* .directions {
-    display: none;
-  } */
+  .menu > div > div {
+    margin-left: -100px;
+  }
 
-  /* .question {
-    padding: 0.8rem;
-    padding-top: 0;
-  } */
-
-  /* .choice {
-    padding: 0.8rem;
-    width: 33%;
-  } */
-
-  /* .buttons {
-    padding: 1rem;
-    margin: 1rem;
-    padding-bottom: 12px;
-  } */
-
-  /* .radio-settings {
-    display: inline-block;
-    margin-left: 38%;
-    padding-bottom: 1rem;
-    font-size: 1rem;
-  } */
-
-  /* .rdo {
-    padding-left: 2rem;
-  } */
-  /* 
-  .scoreboard {
-    padding: 0.4rem;
+  .menu > div > div > h2 {
     font-size: 1.5rem;
-    width: 33%;
-    margin: auto;
-  } */
-}
+    margin-left: 60%;
+    transform: translate(-50%);
+  }
 
-/* Galaxy S5 Portrait */
-@media screen and (device-width: 360px) and (device-height: 640px) and (orientation: portrait) {
-  /* .title {
-    font-size: 0.8rem;
-    padding: 0.5rem;
-    padding-bottom: 0;
-  } */
-
-  /* .directions {
-    display: none;
-  } */
-
-  /* .question {
-    font-size: 6rem;
-    padding: 1rem;
-    padding-top: 0;
-  } */
-
-  /* .choice {
-    padding: 0.5rem;
-  } */
-
-  /* .buttons {
-    padding: 0.5rem;
-    margin: 0.5rem;
-  } */
-
-  /* .btn_next {
-    font-size: 1.7rem;
-  } */
-
-  /* .radios {
-    display: inline-block;
-    margin-left: 15%;
-    padding-bottom: 1rem;
-    font-size: 1.2rem;
-  } */
-  /* 
-  .rdo {
-    padding-left: 2rem;
-  } */
-
-  /* .scoreboard {
-    padding: 0.6rem;
-    font-size: 1.6rem;
-    width: 85%;
-    margin: auto;
-  } */
-}
-
-/* Galaxy S5 Landscape */
-@media screen and (device-width: 640px) and (device-height: 360px) and (orientation: landscape) {
-  /* .title {
-    visibility: hidden;
-  } */
-
-  /* .tiny {
-    visibility: visible;
+  .menu > div > div > span:first-of-type {
+    /* background-color: red; */
     display: block;
-  } */
+    margin-top: -36px;
+    margin-left: 100px;
+    width: 300px;
+    font-size: 1rem;
+    padding-left: 12px;
+  }
 
-  /* .directions,
-  .question,
-  .choice,
-  .buttons,
-  .radio-settings,
-  .scoreboard {
+  .menu > div > div > ul {
+    margin-left: 160px;
+  }
+
+  .menu > div > div > ul > span:first-of-type {
+    /* background-color: blue; */
+    display: block;
+    margin-top: 24px;
+    /* margin-bottom: -48px; */
+    margin-left: -60px;
+    padding-left: 12px;
+    font-size: 1rem;
+    width: 300px;
+  }
+
+  .menu > div > div > ul > li {
+    /* background-color: purple; */
+    margin-left: -60px;
+    width: 320px;
+  }
+
+  .tp-title {
+    font-size: 1rem;
+  }
+
+  .title h2,
+  .title h1 {
     display: none;
-  } */
+  }
 
-  /* footer {
-    padding-top: 4.5rem;
-    position: relative;
-  } */
+  .title::after {
+    content: "TPP2";
+  }
+
+  .direction {
+    margin: 0;
+  }
+
+  .question {
+    font-size: 1.8rem;
+  }
+
+  .buttons {
+    margin: 1.2rem;
+  }
+
+  .scoreboard {
+    width: 75%;
+  }
+}
+
+/* @mq for-tablet-portrait-up  */
+@media (min-width: 600px) {
+  /* @content; */
+}
+
+/* @mq for-tablet-landscape-up  */
+@media (min-width: 900px) {
+  /* @content; */
+}
+
+/* @mq for-desktop-up  */
+@media (min-width: 1200px) {
+  /* @content; */
+}
+
+/* @mq for-big-desktop-up  */
+@media (min-width: 1800px) {
+  /* @content; */
 }
