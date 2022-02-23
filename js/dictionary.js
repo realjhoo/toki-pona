@@ -1,5 +1,5 @@
 // toki pona dictionary
-const tokiPonaWord = [
+export const tokiPonaWord = [
   {
     word: "a",
     definition: ["[emphasis]", "ah", "ha", "uh", "oh", "ooh", "aw", "well"],
@@ -76,6 +76,10 @@ const tokiPonaWord = [
   },
   { word: "anu", definition: ["or"] },
   {
+    word: "apeja",
+    definition: ["shame", "guilt"],
+  },
+  {
     word: "awen",
     definition: [
       "remaining",
@@ -84,10 +88,15 @@ const tokiPonaWord = [
       "sedentary",
       "still",
       "stay",
+      "continuing",
     ],
   },
-  { word: "e", definition: ["[object follows]", "self [with pronoun]"] },
-  { word: "en", definition: ["and"] },
+  { word: "e", definition: ["[object follows]"] },
+  { word: "en", definition: ["[between multiple subjects]", "and"] },
+  {
+    word: "epiku",
+    definition: ["epic", "awesome"],
+  },
   {
     word: "esun",
     definition: [
@@ -108,6 +117,10 @@ const tokiPonaWord = [
   { word: "ilo", definition: ["useful", "tool", "device", "machine"] },
   { word: "insa", definition: ["inner", "inside", "internal", "stomach"] },
   {
+    word: "isipin",
+    definition: ["think", "imagine", "believe"],
+  },
+  {
     word: "jaki",
     definition: [
       "dirty",
@@ -121,6 +134,10 @@ const tokiPonaWord = [
     ],
   },
   { word: "jan", definition: ["human", "person", "somebody", "people"] },
+  {
+    word: "jasima",
+    definition: ["reflect", "to mirror", "opposite"],
+  },
   {
     word: "jelo",
     definition: ["yellow", "yellowish", "yellowy", "light green"],
@@ -143,14 +160,25 @@ const tokiPonaWord = [
     word: "kama",
     definition: ["come", "coming", "future", "arrival", "beginning"],
   },
+  {
+    word: "kapesi",
+    definition: ["brown", "grey"],
+  },
   { word: "kasi", definition: ["vegetation", "plant", "herb", "leafy"] },
   {
     word: "ken",
     definition: ["can", "is able to", "allowed to", "may", "possible"],
   },
   { word: "kepeken", definition: ["use", "using", "usage"] },
-  { word: "kili", definition: ["fruit", "fruity", "a vegetable", "mushroom"] },
+  {
+    word: "kili",
+    definition: ["fruit", "fruity", "a vegetable", "edible mushroom"],
+  },
   { word: "kin", definition: ["indeed", "actually", "in fact", "really"] },
+  {
+    word: "kipisi",
+    definition: ["cut", "slice", "split", "divide"],
+  },
   {
     word: "kiwen",
     definition: [
@@ -178,6 +206,10 @@ const tokiPonaWord = [
     ],
   },
   {
+    word: "ku",
+    definition: ["related to The Toki Pona Dictionary"],
+  },
+  {
     word: "kule",
     definition: ["color", "colorful", "pigmented", "painted", "dye", "hue"],
   },
@@ -194,11 +226,19 @@ const tokiPonaWord = [
   },
   { word: "kute", definition: ["hear", "hearing", "auditory", "ear"] },
   { word: "la", definition: ["[context follows]"] },
+  {
+    word: "lanpan",
+    definition: ["take", "seize", "catch", "receive", "get"],
+  },
   { word: "lape", definition: ["sleep", "rest", "sleeping"] },
   { word: "laso", definition: ["blue", "blue-green"] },
   {
     word: "lawa",
     definition: ["head", "mind", "leader", "in charge", "control", "to steer"],
+  },
+  {
+    word: "leko",
+    definition: ["stairs", "square", "block", "cube"],
   },
   { word: "len", definition: ["fabric", "cloth", "clothing"] },
   { word: "lete", definition: ["cold", "uncooked", "raw"] },
@@ -249,16 +289,28 @@ const tokiPonaWord = [
   },
   { word: "lupa", definition: ["hole", "orifice", "window or door"] },
   { word: "ma", definition: ["land", "earth", "country", "the outdoors"] },
+  {
+    word: "majuna",
+    definition: ["old", "aged"],
+  },
   { word: "mama", definition: ["parent", "maternal or paternal"] },
   { word: "mani", definition: ["money", "material wealth"] },
   {
     word: "meli",
     definition: ["woman", "female", "girl", "wife", "girlfriend", "feminine"],
   },
+  {
+    word: "meso",
+    definition: ["middle", "medium", "mediocre", "neither"],
+  },
   { word: "mi", definition: ["I", "my"] },
   {
     word: "mije",
     definition: ["man", "male", "boy", "husband", "boyfriend", "manly"],
+  },
+  {
+    word: "misikeke",
+    definition: ["medicine"],
   },
   {
     word: "moku",
@@ -269,6 +321,10 @@ const tokiPonaWord = [
     definition: ["death", "dead", "deadly", "fatal", "kill", "die"],
   },
   { word: "monsi", definition: ["back", "ass", "butt", "rear", "behind"] },
+  {
+    word: "monsuta",
+    definition: ["fear", "monster"],
+  },
   { word: "mu", definition: ["[a cute animal noise]"] },
   { word: "mun", definition: ["moon", "lunar"] },
   {
@@ -285,6 +341,14 @@ const tokiPonaWord = [
   {
     word: "mute",
     definition: ["many", "several", "a lot", "abundant", "numerous", "much"],
+  },
+  {
+    word: "n",
+    definition: ["hmmm"],
+  },
+  {
+    word: "namako",
+    definition: ["extra", "embelish", "additional", "spice"],
   },
   { word: "nanpa", definition: ["number", "numeral"] },
   {
@@ -315,7 +379,7 @@ const tokiPonaWord = [
   { word: "nena", definition: ["bump", "hill", "mountain", "button", "nose"] },
   { word: "ni", definition: ["this", "that"] },
   { word: "nimi", definition: ["word", "name"] },
-  { word: "noka", definition: ["leg", "foot"] },
+  { word: "noka", definition: ["leg", "foot", "20"] },
   { word: "o", definition: ["[imperative follows]", "hey"] },
   { word: "oko", definition: ["eye"] },
   { word: "olin", definition: ["love"] },
@@ -338,6 +402,10 @@ const tokiPonaWord = [
       "shattered",
       "damn!",
     ],
+  },
+  {
+    word: "pake",
+    definition: ["stop", "cease", "quit"],
   },
   {
     word: "pali",
@@ -372,7 +440,7 @@ const tokiPonaWord = [
   },
 
   { word: "pana", definition: ["give", "put", "send", "release", "emit"] },
-  { word: "pi", definition: ["of"] },
+  { word: "pi", definition: ["of", "[regroups modifiers]"] },
   { word: "pilin", definition: ["feelings", "emotion"] },
   { word: "pimeja", definition: ["black", "dark", "shadow", "darken"] },
   { word: "pini", definition: ["end", "tip", "finish", "complete", "done"] },
@@ -394,8 +462,20 @@ const tokiPonaWord = [
       "right",
     ],
   },
+  {
+    word: "po",
+    definition: ["4", "four"],
+  },
+  {
+    word: "powe",
+    definition: ["unreal", "false", "untrue", "pretend", "deceive"],
+  },
   { word: "pu", definition: ["related to the Toki Pona book", "official"] },
   { word: "sama", definition: ["same", "similar", "equal", "alike"] },
+  {
+    word: "san",
+    definition: ["3", "three"],
+  },
   {
     word: "seli",
     definition: ["fire", "warmth", "heat", "cook", "cooked", "hot"],
@@ -420,6 +500,10 @@ const tokiPonaWord = [
   {
     word: "sitelen",
     definition: ["picture", "image", "draw", "write", "glyph"],
+  },
+  {
+    word: "soko",
+    definition: ["fungus", "fungi", "mushroom", "mold"],
   },
   {
     word: "sona",
@@ -470,6 +554,10 @@ const tokiPonaWord = [
     word: "tomo",
     definition: ["indoor space", "house", "room", "building"],
   },
+  {
+    word: "tonsi",
+    definition: ["non-binary gender", "transgender"],
+  },
   { word: "tu", definition: ["2", "pair", "dual", "duo", "double"] },
   { word: "unpa", definition: ["sex", "erotic", "sexual"] },
   { word: "uta", definition: ["mouth", "oral"] },
@@ -510,220 +598,5 @@ const tokiPonaWord = [
   {
     word: "wile",
     definition: ["desire", "need", "will", "want", "wish", "must", "should"],
-  },
-  { word: "kipisi", definition: ["to cut", "fragment", "to slice", "divide"] },
-  {
-    word: "namako",
-    definition: [
-      "spice",
-      "something extra",
-      "food additive",
-      "accessory",
-      "flavor",
-      "spicy",
-    ],
-  },
-  {
-    word: "monsuta",
-    definition: [
-      "monster",
-      "fearful thing",
-      "fright",
-      "fear",
-      "mythical creatures",
-    ],
-  },
-  { word: "leko", definition: ["square", "cube", "block", "brick", "stairs"] },
-];
-
-// --------------------------------------------------------
-// REDO - this needs more focus on common coumpounds
-// not a phrase book
-const tokiPonaCompound = [
-  {
-    word: "anpa-lawa",
-    definition: ["neck", "throat"],
-  },
-  {
-    word: "akesi-linja",
-    definition: ["snake"],
-  },
-  {
-    word: "awen-pona",
-    definition: ["to be patient"],
-  },
-  {
-    word: "en tenpo pimeja en tenpo suno",
-    definition: "night and day",
-  },
-  {
-    word: "ijo-ike",
-    definition: ["bad thing", "misfortune"],
-  },
-  {
-    word: "ijo-pana",
-    definition: ["a gift"],
-  },
-  {
-    word: "ijo tawa jan-sewi",
-    definition: ["a sacrifice", "an offering"],
-  },
-  {
-    word: "ijo uta walo",
-    definition: ["teeth"],
-  },
-  {
-    word: "ike li kama",
-    definition: ["stuff happens"],
-  },
-  {
-    word: "ike-sijelo",
-    definition: ["sick"],
-  },
-  {
-    word: "ilo sijelo waso",
-    definition: ["wing"],
-  },
-  {
-    word: "ilo lukin oko",
-    definition: ["glasses"],
-  },
-
-  {
-    word: "ilo-moku",
-    definition: ["eating utensil"],
-  },
-  {
-    word: "ilo-musi",
-    definition: ["toy"],
-  },
-  {
-    word: "ilo pi sitelen tawa",
-    definition: ["televison"],
-  },
-  {
-    word: "ilo pi sitelen toki",
-    definition: ["pen or pencil"],
-  },
-  {
-    word: "ilo sona kupulu",
-    definition: ["internet"],
-  },
-  {
-    word: "ilo suno",
-    definition: ["flashlight"],
-  },
-  {
-    word: "insa-ala",
-    definition: ["outside"],
-  },
-  {
-    word: "insa e ijo",
-    definition: ["swallow"],
-  },
-  {
-    word: "jan-ike",
-    definition: ["bad person", "enemy", "a jerk"],
-  },
-  {
-    word: "jan-jaki",
-    definition: ["an infected person"],
-  },
-  {
-    word: "jan-kiwen",
-    definition: ["a statue of a person"],
-  },
-  {
-    word: "jan-lawa ma",
-    definition: ["leader of a country", "a president"],
-  },
-  {
-    word: "jan-lawa pi jan utala",
-    definition: ["a general", "a military commander"],
-  },
-  {
-    word: "jan-lawa pi ma tomo",
-    definition: ["mayor"],
-  },
-  {
-    word: "jan-lawa pi tomo tawa kon",
-    definition: ["a pilot"],
-  },
-  {
-    word: "jan-lawa pi tomo tawa telo",
-    definition: ["ship captain"],
-  },
-  {
-    word: "jan-lawa sewi",
-    definition: ["priest"],
-  },
-  {
-    word: "jan-lili",
-    definition: ["a child"],
-  },
-  {
-    word: "jan-musi",
-    definition: ["an entertainer"],
-  },
-  {
-    word: "jan-mute",
-    definition: ["a crowd"],
-  },
-  {
-    word: "jan pi kama sona",
-    definition: ["a student"],
-  },
-  {
-    word: "jan pi ma ante",
-    definition: ["foreigner"],
-  },
-  {
-    word: "jan pi ma same",
-    definition: ["fellow countryman"],
-  },
-  {
-    word: "jan pi ma tomo",
-    definition: ["city person"],
-  },
-  {
-    word: "jan pi pana sona",
-    definition: ["teacher"],
-  },
-  {
-    word: "jan pi pona lukin",
-    definition: ["an attractive person", "a cutie", "a qt"],
-  },
-  {
-    word: "jan pi wawa ala",
-    definition: ["a weak person"],
-  },
-  {
-    word: "jan-sin",
-    definition: ["the new guy", "newbie"],
-  },
-  {
-    word: "jan sin",
-    definition: ["more people"],
-  },
-  {
-    word: "jan-utala",
-    definition: ["soldier"],
-  },
-  {
-    word: "jan-wawa",
-    definition: ["strong person"],
-  },
-  {
-    word: "jan wawa-wile",
-    definition: ["a strong willed person"],
-  },
-  {
-    word: "",
-    definition: [""],
-  },
-
-  {
-    word: "",
-    definition: [""],
   },
 ];

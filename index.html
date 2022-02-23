@@ -3,89 +3,70 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width", initial-scale=1.0" />
-    <link rel="stylesheet" href="css/hamburger.css" />
+    <link rel="stylesheet" href="css/menu.css" />
     <link rel="stylesheet" href="css/style.css" />
 
-    <title>Toki Pona Practice 2</title>
+    <title>toki pona sona san</title>
   </head>
   <body>
-    <!-- * * * HAMBURGER MENU * * * -->
-    <div class="menu-wrap">
-      <input type="checkbox" class="toggle" />
-      <div class="hamburger"><div></div></div>
-      <div class="menu">
-        <div>
-          <div>
-            <h2 class="settings-header">Settings</h2>
-            <span class="directions"
-              >Would you like to display the questions as single words or
-              compound words?</span
-            >
-            <ul>
-              <li class="first">
-                <label>
-                  <input type="radio" name="words" id="radio-single" />
-                  <span>Allow Single Words or Glyphs Only </span>
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input
-                    type="radio"
-                    name="words"
-                    id="radio-compound"
-                    disabled
-                  />
-                  <span>Allow Compound Words and Glyphs </span>
-                </label>
-              </li>
-              <span class="directions"
-                >How would you like the question displayed?</span
-              >
+    <nav>
+      <!-- NEW BURGER MENU -->
+      <div class="navbar">
+        <!--  * * *  BURGER *  * *  -->
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
 
-              <li>
-                <label>
-                  <input
-                    type="radio"
-                    name="question-format"
-                    id="radio-tp-glyph"
-                  />
-                  <span>Toki Pona Glyphs</span>
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input
-                    type="radio"
-                    name="question-format"
-                    id="radio-tp-words"
-                  />
-                  <span>Toki Pona Words</span>
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input
-                    type="radio"
-                    name="question-format"
-                    id="radio-en-words"
-                  />
-                  <span>English Words</span>
-                </label>
-              </li>
-            </ul>
-          </div>
+        <!-- * * * TITLE * * *  -->
+        <div class="logo">
+          <h4 class="tp-title">toki pona sona san</h4>
         </div>
       </div>
-    </div>
-    <!-- * * * END OF HAMBURGER  * * *-->
+
+      <!-- * * * SLIDE OUT MENU * * * -->
+      <div class="slide-menu">
+        <h1>Settings</h1>
+        <ul class="nav-links">
+          <li>
+            <label>
+              <input type="radio" name="words" id="radio-single" />
+              <span>Allow Single Words or Glyphs Only </span>
+            </label>
+          </li>
+
+          <li>
+            <label>
+              <input type="radio" name="words" id="radio-compound" disabled />
+              <span>Allow Compound Words and Glyphs </span>
+            </label>
+          </li>
+
+          <li>
+            <label>
+              <input type="radio" name="question-format" id="radio-tp-glyph" />
+              <span>Toki Pona Glyphs</span>
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="radio" name="question-format" id="radio-tp-words" />
+              <span>Toki Pona Words</span>
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="radio" name="question-format" id="radio-en-words" />
+              <span>English Words</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
     <!-- Title and Stuff -->
     <div class="title center">
-      <h1 class="tp-title">Toki Pona Practice 2</h1>
-      <h2 class="">toki pona sona tu</h2>
-      <h1 class="tp-glyphs">toki-pona sona tu</h1>
-
       <h2 class="error">Something went wrong. Unfortunate.</h2>
       <h3 class="error">toki pona sona tu li pakala. ike.</h3>
       <h2 class="error tp-glyphs">toki-pona sona tu li pakala. ike.</h2>
@@ -95,8 +76,6 @@
     <section class="directions center">Choose the best answer</section>
 
     <!-- Question -->
-    <!-- <section class="question tp-word center" id="glyph"></section> -->
-    <!-- temp - use these id -->
     <section class="question tp-glyphs tp-word center" id="tp-word"></section>
     <!-- <section class="question en-word center" id="en-word"></section> -->
 
@@ -110,24 +89,22 @@
       </ul>
     </section>
 
-    <!-- New Question Button -->
-    <section class="buttons center">
-      <button class="btn-next tp-glyphs" id="btn-next">sin</button>
-    </section>
-
     <!-- Scoreboard -->
     <section class="scoreboard center">
       sina jo e <span class="score" id="score">0</span> pona!
     </section>
 
+    <!-- New Question Button -->
+    <section class="buttons center">
+      <button class="btn-next tp-glyphs" id="btn-next">sin</button>
+    </section>
+
     <!-- Footer -->
     <footer class="center">
       <p class="tp-glyphs">nimi mi jan [_uta_walo_en]</p>
-      <p>&copy; 2019 - 2020 jan Uwe</p>
+      <p>&copy; 2019 - 2022 jan Uwe</p>
     </footer>
-    <script src="js/words.js"></script>
-    <script src="js/compounds.js"></script>
-    <script src="js/dictionary.js"></script>
-    <script src="js/app.js"></script>
+    <script type="module" src="js/dictionary.js"></script>
+    <script type="module" src="js/app.js"></script>
   </body>
 </html>

@@ -1,9 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 @font-face {
   font-family: "linja-pona";
-  src: url("../font/linja-pona-4.1.woff") format("woff");
+  src: url("../font/linja-pona-4.9.woff") format("woff");
 }
 
 :root {
@@ -19,6 +18,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  max-width: 100%;
 }
 
 html {
@@ -30,18 +30,8 @@ body {
   background-color: var(--main-color);
   color: var(--text-color);
   font-family: var(--text-font);
-}
-
-.settings-header {
-  font-size: 2.5rem;
-  text-align: center;
-  padding-top: -3rem;
-  padding-bottom: 3rem;
-}
-
-.title {
-  font-size: 1.4rem;
-  padding: 1rem;
+  text-shadow: 0 0 15px orange, 0 0 25px orange;
+  overflow: hidden;
 }
 
 .error {
@@ -53,38 +43,39 @@ input:disabled + span {
 }
 
 .directions {
-  font-weight: 500;
-  padding-top: 0.7rem;
-  /* padding-bottom: 12px; */
+  margin-top: 9vh;
 }
 
 .question {
-  font-size: 6rem;
+  font-size: 4rem;
   padding: 0.7rem;
+  margin-top: 0.8rem;
 }
 
 .choice {
   padding: 1rem;
-  border-top: 1px solid var(--text-color);
-  border-left: 1px solid var(--text-color);
-  border-right: 1px solid var(--text-color);
-  width: 45%;
+  border: 1px solid orange;
+  box-shadow: 0 0 2px orange, 0 0 2px orange;
+  width: 80%;
   margin: auto;
   list-style-type: none;
   cursor: pointer;
+  font-size: 1.6rem;
 }
 
-.choice-3 {
-  border-bottom: 1px solid var(--text-color);
-}
-
-.choice:hover {
-  background-color: var(--text-color);
-  color: var(--main-color);
+.scoreboard {
+  padding: 0.4rem;
+  font-size: 1.5rem;
+  width: 80%;
+  margin: auto;
+  background-color: #f4f4f4;
+  color: #333;
+  border: 1px solid orange;
+  box-shadow: 0 0 2px orange, 0 0 2px orange;
 }
 
 .buttons {
-  margin: 3rem;
+  margin: 1rem;
 }
 
 .btn-next {
@@ -117,14 +108,6 @@ input:disabled + span {
   text-shadow: 0px 1px 0px #528009;
 }
 
-.scoreboard {
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  border: 1px solid var(--text-color);
-  width: 45%;
-  margin: auto;
-}
-
 /* this class renders glyphs */
 .tp-glyphs {
   font-family: var(--toki-font);
@@ -134,114 +117,12 @@ input:disabled + span {
 
 .center {
   text-align: center;
+  white-space: nowrap;
 }
 
 footer {
-  /* padding-top: 1rem; */
-  /* padding-bottom: 12px; */
-  /* position: absolute; */
-  /* left: 0; */
-  /* bottom: 0; */
+  position: absolute;
+  bottom: 0;
   height: 40px;
   width: 100%;
-  padding-top: 16px;
-}
-
-/*  *****************   MEDIA QUERIES    ****************************** */
-
-/* @mq for-phone-only ------------------------------------------------- */
-@media (max-width: 599px) {
-  .menu span {
-    font-size: 0.9rem;
-  }
-
-  .menu > div > div {
-    margin-left: -100px;
-  }
-
-  .menu > div > div > h2 {
-    font-size: 1.5rem;
-    margin-left: 60%;
-    transform: translate(-50%);
-  }
-
-  .menu > div > div > span:first-of-type {
-    /* background-color: red; */
-    display: block;
-    margin-top: -36px;
-    margin-left: 100px;
-    width: 300px;
-    font-size: 1rem;
-    padding-left: 12px;
-  }
-
-  .menu > div > div > ul {
-    margin-left: 160px;
-  }
-
-  .menu > div > div > ul > span:first-of-type {
-    /* background-color: blue; */
-    display: block;
-    margin-top: 24px;
-    /* margin-bottom: -48px; */
-    margin-left: -60px;
-    padding-left: 12px;
-    font-size: 1rem;
-    width: 300px;
-  }
-
-  .menu > div > div > ul > li {
-    /* background-color: purple; */
-    margin-left: -60px;
-    width: 320px;
-  }
-
-  .tp-title {
-    font-size: 1rem;
-  }
-
-  .title h2,
-  .title h1 {
-    display: none;
-  }
-
-  .title::after {
-    content: "TPP2";
-  }
-
-  .direction {
-    margin: 0;
-  }
-
-  .question {
-    font-size: 1.8rem;
-  }
-
-  .buttons {
-    margin: 1.2rem;
-  }
-
-  .scoreboard {
-    width: 75%;
-  }
-}
-
-/* @mq for-tablet-portrait-up  */
-@media (min-width: 600px) {
-  /* @content; */
-}
-
-/* @mq for-tablet-landscape-up  */
-@media (min-width: 900px) {
-  /* @content; */
-}
-
-/* @mq for-desktop-up  */
-@media (min-width: 1200px) {
-  /* @content; */
-}
-
-/* @mq for-big-desktop-up  */
-@media (min-width: 1800px) {
-  /* @content; */
 }

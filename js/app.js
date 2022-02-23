@@ -1,10 +1,7 @@
-// TTP2 Version B
-// Toki Pona Practice App (Web Version)
-// Copyright (c) 2020 jan Uwe
-// All rights reserved
-// lina pona font credit goes here
 "use strict";
-// dictionary stored in dictionary.js
+
+import { tokiPonaWord } from "./dictionary.js";
+
 // currect answer state
 let currentCorrectAnswer = 0;
 
@@ -79,6 +76,20 @@ function score_minus() {
 }
 
 // --------------------------------------------------------
+function resizeQuestionFont() {
+  const questionLength = document.querySelector(".question").innerText.length;
+  let questionSize = document.querySelector(".question");
+
+  if (questionLength <= 12) {
+    questionSize.style.fontSize = "2rem";
+  } else if (questionLength > 12 && questionLength < 20) {
+    questionSize.style.fontSize = "calc(100vw / 14)";
+  } else if (questionLength >= 20) {
+    questionSize.style.fontSize = "calc(100vw / 20)";
+  }
+}
+
+// --------------------------------------------------------
 function handleAnswerClick() {
   // event listener checks the answer & gives visual indicator
   const choice = document.querySelectorAll(".choice");
@@ -93,14 +104,14 @@ function handleAnswerClick() {
       let choiceClass = event.target.classList[1];
       // chop off the end and convert to a number
       choiceClass = parseInt(choiceClass.slice(-1));
-      // compare with global current correct answer
+      // compare with current correct answer state
       if (currentCorrectAnswer === choiceClass) {
-        //        console.log("CORRECT!");
+        // Correct
         event.target.style.backgroundColor = color_correct;
         event.target.style.color = off_black;
         score_plus();
       } else {
-        //      console.log("nope!");
+        // Incorrect
         event.target.style.backgroundColor = color_wrong;
         event.target.style.color = off_white;
         score_minus();
@@ -133,41 +144,95 @@ function handleButtonClick() {
 
 // --------------------------------------------------------
 function glyphQuestion(useThisDictionary) {
-  // add tp-glyphs class to show question in glyph form
+  const STANDARD_DICTIONARY = 0;
+  let randomWord = 0;
+  let storeRandomNumber = [];
+
+  // add tp-glyphs class to .question
   document.querySelector(".question").classList.add("tp-glyphs");
-  // set dictionary 0 to tokiPonaWord and 1 to tokiPonaCompound
+
+  // create 4 answer choices
   for (let i = 0; i < 4; i++) {
-    if (useThisDictionary === 0) {
+    if (useThisDictionary === STANDARD_DICTIONARY) {
+      // rnd num between 0 and length of dictionary
+      randomWord = getRandomNumber(0, tokiPonaWord.length - 1);
+
+      // insert 4 random answer choices
       document.getElementById("choice-" + i).innerText =
-        tokiPonaWord[getRandomNumber(0, tokiPonaWord.length)].word;
+        tokiPonaWord[randomWord].word;
     } else {
-      // use the other dictionary (tokiPonaCompound)
+      // use the compound dictionary
+      // this feature not yet imlemented
     }
+
+    // logout useful info
+    console.log(
+      "word",
+      i + 1,
+      "is",
+      document.getElementById("choice-" + i).innerText,
+      " - word number:",
+      randomWord
+    );
+
+    // store all 4 random numbers
+    storeRandomNumber[i] = randomWord;
   }
 
-  // if any answers choices are duplicated reload the board
+  // pick a number between 0 and 3 as correct answer
+  let chosenAnswerIndex = getRandomNumber(0, 3);
+  let chosenAnswer = storeRandomNumber[chosenAnswerIndex];
+
+  //set the question
+  document.querySelector(".question").innerText =
+    tokiPonaWord[chosenAnswer].word;
+
+  // logout useful information
+  console.log("Question:", document.querySelector(".question").innerText);
+  console.log(
+    "Correct Answer:",
+    document.getElementById("choice-" + chosenAnswerIndex).innerText,
+    "Choice #:",
+    chosenAnswerIndex + 1
+  );
+
+  // set correct answer state
+  currentCorrectAnswer = chosenAnswerIndex;
+
+  // if any answers are duplicated, reload
   noDupes();
 
-  // randomly choose a correct answer from one of the choices and display
-  let chosenAnswerIndex = getRandomNumber(0, 3);
-  let answer = document.getElementById("choice-" + chosenAnswerIndex).innerText;
-  document.querySelector(".question").innerText = answer;
-  // set the global current correct answer
-  currentCorrectAnswer = chosenAnswerIndex;
+  // check for unsupported sitelen pona and reload
+  // powe majuna san po n kapesi isipin
+  let answer = document.querySelector(".question").innerText;
+  if (
+    answer === "powe" ||
+    answer === "majuna" ||
+    answer === "san" ||
+    answer === "po" ||
+    answer === "n" ||
+    answer === "kapesi" ||
+    answer === "isipin"
+  ) {
+    console.log(
+      `${answer} is not supported by the linja pona font, so the board was reloaded`
+    );
+    // reload
+    setTheBoard();
+  }
 }
 
 // --------------------------------------------------------
 function tokiPonaQuestion(useThisDictionary) {
   let storeRandomNumber = [];
   let randomWord = 0;
-  let chosenAnswer = 0;
 
-  // remove tp-glyphs class to show toki pona word, not glyph
+  // remove tp-glyphs class from .question
   document.querySelector(".question").classList.remove("tp-glyphs");
 
-  // loop to create 4 answer choices
+  // create 4 answer choices
   for (let i = 0; i < 4; i++) {
-    // store rnd# so we can match question/answer
+    // rnd num betwen 0 and length of dictionary
     randomWord = getRandomNumber(0, tokiPonaWord.length - 1);
 
     // insert 4 random answer choices
@@ -176,69 +241,108 @@ function tokiPonaQuestion(useThisDictionary) {
         getRandomNumber(0, tokiPonaWord[randomWord].definition.length - 1)
       ];
 
+    // logout useful info
+    console.log(
+      "word",
+      i + 1,
+      "is",
+      document.getElementById("choice-" + i).innerText,
+      " - word number:",
+      randomWord
+    );
+
     // store all 4 random numbers so we can figure out the question
     storeRandomNumber[i] = randomWord;
   }
 
-  // if any answers choices are duplicated reload the board
-  noDupes();
-
   // pick a number between 0 - 3 to be the correct answer
   let chosenAnswerIndex = getRandomNumber(0, 3);
-  chosenAnswer = storeRandomNumber[chosenAnswerIndex];
+  let chosenAnswer = storeRandomNumber[chosenAnswerIndex];
 
-  //  console.log("Current Correct Answer: ", currentCorrectAnswer);
-
-  // get original tp word and and insert as question
+  // set the question
   document.querySelector(".question").innerText =
     tokiPonaWord[chosenAnswer].word;
 
-  // set the global current correct answer
+  // logout useful information
+  console.log("Question:", document.querySelector(".question").innerText);
+  console.log(
+    "Correct Answer:",
+    document.getElementById("choice-" + chosenAnswerIndex).innerText,
+    "Choice #:",
+    chosenAnswerIndex + 1
+  );
+
+  // set correct answer state
   currentCorrectAnswer = chosenAnswerIndex;
+
+  // if any answers are duplicated, reload
+  noDupes();
 }
 
 // --------------------------------------------------------
 function englishQuestion() {
   let storeRandomNumber = [];
   let randomWord = 0;
-  let chosenAnswer = 0;
-  // question in english -> answers in toki
+
   //remove tp-glyph class from .question
   document.querySelector(".question").classList.remove("tp-glyphs");
 
-  // loop to create 4 answer choices
+  // create 4 answer choices
   for (let i = 0; i < 4; i++) {
+    // rnd num between 0 and length of dictionary
     randomWord = getRandomNumber(0, tokiPonaWord.length - 1);
 
-    // insert 4 tp word as answer choices
+    // logout useful info
+    console.log(
+      "word",
+      i + 1,
+      "is",
+      tokiPonaWord[randomWord].word,
+      "- word number:",
+      randomWord
+    );
+
+    // insert 4 toki pona word as answer choices
     document.getElementById("choice-" + i).innerText =
       tokiPonaWord[randomWord].word;
 
-    // store random num so we can match quest/ans
+    // store the 4 random numbers to match the question and answers
     storeRandomNumber[i] = randomWord;
   }
 
-  noDupes();
   // pick a number between 0 - 3 to be the correct answer
   let chosenAnswerIndex = getRandomNumber(0, 3);
-  chosenAnswer = storeRandomNumber[chosenAnswerIndex];
+  let chosenAnswer = storeRandomNumber[chosenAnswerIndex];
 
-  // get original tp word and and insert as question
+  // set the question
   document.querySelector(".question").innerText =
     tokiPonaWord[chosenAnswer].definition[
       getRandomNumber(0, tokiPonaWord[chosenAnswer].definition.length - 1)
     ];
 
-  // set the global current correct answer
+  resizeQuestionFont();
+
+  // logout useful information
+  console.log("Question:", document.querySelector(".question").innerText);
+  console.log(
+    "Correct Answer:",
+    tokiPonaWord[chosenAnswer].word,
+    "Choice #:",
+    chosenAnswerIndex + 1
+  );
+
+  // set current correct answer state
   currentCorrectAnswer = chosenAnswerIndex;
+
+  // if any answer choices are duplicated, reload
+  noDupes();
 }
 
 // --------------------------------------------------------
 function clearTheBoard() {
-  //  const color_correct = "#afe632";
-  //  const color_wrong = "#ff0403";
   const off_black = "#333";
   const off_white = "#f4f4f4";
+
   for (let i = 0; i < 4; i++) {
     let choice = "choice-" + i;
     document.getElementById(choice).style.backgroundColor = off_black;
@@ -249,7 +353,7 @@ function clearTheBoard() {
 // --------------------------------------------------------
 function setTheBoard() {
   let useThisDictionary = 0;
-  // PROGRAM LOGIC BEGINS - CONTROLLED BY SETTINGS
+  // use the settings
   let radioSingle = document.getElementById("radio-single");
   let radioTPGlyph = document.getElementById("radio-tp-glyph");
   let radioTPWords = document.getElementById("radio-tp-words");
@@ -258,43 +362,43 @@ function setTheBoard() {
   // remove colors for right/wrong answers
   clearTheBoard();
 
-  // * * *  * * * * * * * * * *  * * * * *
-  // DO SINGLE WORDS FIRST FOR EACH OPTION
-  // * *  * * * * * * * * *  * * * * * * *
-
-  // glyphs -> tp words
+  // tp glyphs -> tp words
   if (radioTPGlyph.checked) {
+    console.log("sitelen pona questions -> toki pona answers");
     if (radioSingle) {
       // use single dictionary for glyphs
       useThisDictionary = 0;
       glyphQuestion(useThisDictionary);
     } //else {
     // switch bewteen dictionaries randomly
-    //useThisDictionary = getRandomNumber(0, 1);
+    // not yet implemented
+    useThisDictionary = getRandomNumber(0, 1);
     //}
   }
 
-  // tp-words -> english words
+  // tp words -> english words
   if (radioTPWords.checked) {
-    console.log("tp words");
+    console.log("toki pona questions -> english answers");
     if (radioSingle) {
       // use single dictionary
       useThisDictionary = 0;
       tokiPonaQuestion(useThisDictionary);
     } else {
+      // not yet implemented
       // use both randomly
       useThisDictionary = getRandomNumber(0, 1);
     }
   }
 
-  // english -> tp words
+  // english question -> tp answers
   if (radioEnWords.checked) {
-    console.log("english words");
+    console.log("english questions -> toki pona answers");
     if (radioSingle) {
       //use single dictionary
       useThisDictionary = 0;
       englishQuestion();
     } else {
+      // not yet implemented
       // randomly use both
       useThisDictionary = getRandomNumber(0, 1);
     }
@@ -303,7 +407,7 @@ function setTheBoard() {
 
 // --------------------------------------------------------
 function noDupes() {
-  // this is ugly but easy to understand
+  // if there are duplicate answers, reload the board
   let one = document.getElementById("choice-0").innerText;
   let two = document.getElementById("choice-1").innerText;
   let three = document.getElementById("choice-2").innerText;
@@ -317,38 +421,59 @@ function noDupes() {
     two === four ||
     three === four
   ) {
-    // reload the quiz because there are duplicate answers
+    console.log("-------------------------------------------");
+    console.log("Duplicate answer detected - reloading board");
+    console.log("-------------------------------------------");
+
     setTheBoard();
   }
 }
 
 // --------------------------------------------------------
+const navSlide = () => {
+  const burger = document.querySelector(".burger");
+  const nav = document.querySelector(".slide-menu");
+  const navLinks = document.querySelectorAll(".nav-links li");
+
+  burger.addEventListener("click", () => {
+    nav.classList.toggle("nav-active");
+
+    navLinks.forEach((link, index) => {
+      if (link.style.animation) {
+        link.style.animation = "";
+      } else {
+        link.style.animation = `navLinkFade 0.5s ease forwards ${
+          index / 7 + 0.3
+        }s`;
+      }
+    });
+    // burger animation
+    burger.classList.toggle("toggle");
+  });
+};
+
+// --------------------------------------------------------
 function main() {
-  // const singleTPWord = 0;
-  // const compoundTPWord = 1;
+  if (document.readyState === "interactive") {
+    document.querySelector(".slide-menu").style.display = "flex";
+  }
 
   // get settings from localStorage
   getSettings();
+
   // if the settings are changed, save them
   handleSettingChange();
 
-  // *** initialize the answer click handler ***
+  // initialize the answer click handler
   handleAnswerClick();
   handleButtonClick();
+
+  // the settings menu
+  navSlide();
+
+  // let's go
   setTheBoard();
 }
 
-// log out exemplars
-console.log("Show akesi: " + tokiPonaWord[1].word);
-console.log("Show akesi definition: " + tokiPonaWord[1].definition[2]);
-
-console.log("Show snake: " + tokiPonaCompound[1].word);
-console.log("Show snake definition: " + tokiPonaCompound[1].definition[0]);
-
 // --------------------------------------------------------
-// Let the app begin
 main();
-
-// TODO * * * * * re-enable compound words
-// TODO * * * * * fix up compound dictionary ?
-// TODO * * * * * cleanup code
