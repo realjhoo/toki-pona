@@ -78,7 +78,7 @@ function score_minus() {
 // --------------------------------------------------------
 function resizeQuestionFont() {
   const questionLength = document.querySelector(".question").innerText.length;
-  let questionSize = document.querySelector(".question");
+  const questionSize = document.querySelector(".question");
 
   if (questionLength <= 12) {
     questionSize.style.fontSize = "2rem";
@@ -454,10 +454,6 @@ const navSlide = () => {
 
 // --------------------------------------------------------
 function main() {
-  if (document.readyState === "interactive") {
-    document.querySelector(".slide-menu").style.display = "flex";
-  }
-
   // get settings from localStorage
   getSettings();
 
