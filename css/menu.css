@@ -32,11 +32,9 @@
   top: 7vh;
   right: 0;
   width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   background-color: #5e3154;
   transform: translate(100%);
   transition: transform 0.5s ease-in;
