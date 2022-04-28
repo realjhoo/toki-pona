@@ -1,4 +1,4 @@
-# Toki Pona Practice (TPP) Version 2
+# Toki Pona Practice (TPP) Version 2 (Version 3 Readme to be updated RSN)
 
 # _Dont get too excited... work in progress!_
 
